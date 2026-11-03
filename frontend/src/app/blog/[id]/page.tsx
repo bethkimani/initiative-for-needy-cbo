@@ -7,7 +7,6 @@ import { ArrowLeftIcon, CheckIcon, LinkIcon } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { formatDate } from '@/utils/format';
 import { containerClass } from '@/utils/styles';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { ArticleCard } from '@/components/cards/ArticleCard';
 import NotFound from '@/app/not-found';
@@ -62,7 +61,6 @@ export default function BlogPost() {
           <p className="mt-5 text-sm text-navy/60">
             By {article.author} · <time dateTime={article.date}>{formatDate(article.date)}</time>
           </p>
-          <DraftNote className="mt-6">Draft sample article — to be replaced with approved content.</DraftNote>
         </header>
         <div className={`${containerClass} mt-10 max-w-5xl`}>
           <img src={article.photo.src} alt={article.photo.alt} className="aspect-[16/9] w-full rounded-3xl object-cover" />
@@ -96,11 +94,11 @@ export default function BlogPost() {
             </button>
           </div>
           <div className="mt-12 rounded-3xl bg-brand p-8 text-white md:p-10">
-            <h2 className="text-2xl font-bold">Moved by this story?</h2>
-            <p className="mt-2 text-white/80">Help us write the next one — give or give your time.</p>
+            <h2 className="text-2xl font-bold">Learn more or get involved</h2>
+            <p className="mt-2 text-white/80">Explore our community programmes or volunteer your time and skills.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink to="/donate" variant="red" size="lg">
-                Donate Now
+              <ButtonLink to="/causes" variant="red" size="lg">
+                Explore Our Causes
               </ButtonLink>
               <ButtonLink to="/volunteer" variant="light" size="lg">
                 Volunteer

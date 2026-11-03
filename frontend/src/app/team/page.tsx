@@ -5,13 +5,13 @@ import { images } from '@/data/site';
 import { containerClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
 import { Reveal } from '@/components/ui/Reveal';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { TeamCard } from '@/components/cards/TeamCard';
+import { TeamPhoto } from '@/components/cards/TeamPhoto';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 
 export const metadata: Metadata = {
   title: 'Our Team',
-  description: 'Meet the leadership team of Initiative for the Needy Charity Organization.',
+  description: 'Meet the team leading and delivering Initiative for the Needy’s community programmes.',
 };
 
 export default function Team() {
@@ -21,15 +21,20 @@ export default function Team() {
     <>
       <PageHero
         crumb="Our Team"
-        title="The people behind the work."
-        intro="A small leadership team, supported by dedicated volunteers across Thika."
+        title="Meet Our Team"
+        intro="Meet the people who lead and deliver our work with vulnerable communities in Thika and Kiambu County."
         photo={images.teamOffice} />
       
       <section className="py-20 md:py-28">
         <div className={containerClass}>
           <Reveal className="grid items-center gap-12 rounded-3xl bg-soft p-6 md:p-12 lg:grid-cols-[1fr_1.3fr]">
             <div className="overflow-hidden rounded-2xl bg-white">
-              <img src={images.ceo.src} alt={images.ceo.alt} className="mx-auto aspect-[4/5] w-full max-w-md object-cover object-top" />
+              <TeamPhoto
+                photo={lead.photo}
+                initials={lead.initials}
+                className="aspect-[4/5] w-full max-w-md"
+                imageClassName="mx-auto aspect-[4/5] w-full max-w-md object-cover object-top"
+              />
             </div>
             <div>
               <p className="text-sm font-semibold text-charity">{lead.role}</p>
@@ -39,7 +44,6 @@ export default function Team() {
                 <dt className="text-xs text-navy/55">Focus</dt>
                 <dd className="font-semibold text-navy">{lead.focus}</dd>
               </dl>
-              <DraftNote className="mt-6">Full biography and approved social profile to be supplied by the organization.</DraftNote>
             </div>
           </Reveal>
 
@@ -57,7 +61,7 @@ export default function Team() {
         <div className={`${containerClass} flex flex-col items-start justify-between gap-6 md:flex-row md:items-center`}>
           <div>
             <h2 className="text-2xl font-bold md:text-3xl">Want to serve alongside us?</h2>
-            <p className="mt-2 text-white/80">Our volunteers are the heartbeat of everything we do.</p>
+            <p className="mt-2 text-white/80">Volunteer your time and skills to support vulnerable communities in Kiambu County.</p>
           </div>
           <ButtonLink to="/volunteer" variant="light" size="lg">
             Become a Volunteer

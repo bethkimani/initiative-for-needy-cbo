@@ -7,7 +7,6 @@ import { images } from '@/data/site';
 import { dateParts } from '@/utils/format';
 import { containerClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Reveal } from '@/components/ui/Reveal';
 
@@ -19,8 +18,8 @@ export default function Events() {
     <>
       <PageHero
         crumb="Events"
-        title="Events & Activities"
-        intro="Outreach days, volunteer sessions and fundraising events. Come along, lend a hand, bring a friend."
+        title="Community Activities & Events"
+        intro="Our regular activities include community outreach, counselling, youth mentorship and support for vulnerable children and older people."
         photo={images.blogEvent} />
       
       <section className="py-16 md:py-24">
@@ -41,11 +40,10 @@ export default function Events() {
                 </button>
               )}
             </div>
-            <DraftNote>Sample events — dates and venues to be confirmed by the organization.</DraftNote>
           </div>
 
           {list.length === 0 ?
-          <p className="mt-12 rounded-3xl border border-dashed border-line py-16 text-center text-navy/60">No events to show right now.</p> :
+          <p className="mt-12 rounded-3xl border border-dashed border-line py-16 text-center text-navy/60">No {tab} events are listed at this time. Visit our Projects and News pages for updates on completed programmes.</p> :
 
           <ul className="mt-10 divide-y divide-line border-y border-line">
               {list.map((e, i) => {

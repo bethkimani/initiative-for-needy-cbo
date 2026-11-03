@@ -11,8 +11,8 @@ export function InvolvementCards() {
       <div className={containerClass}>
         <SectionHeading
           align="center"
-          title="Four ways to stand with us"
-          intro="Whether you give money, time, skills or influence — there is a place for you here." />
+          title="Work With Us"
+          intro="Volunteer, partner with us, support our programmes or help connect us with development resources." />
         
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {involvementOptions.map((opt, i) => {

@@ -16,8 +16,8 @@ export function NewsPreview() {
     <section className="bg-soft py-20 md:py-28">
       <div className={containerClass}>
         <SectionHeading
-          title="Stories of Hope, Progress, and Community Impact."
-          intro="Sample articles shown for layout — they will be replaced with approved stories before publication."
+          title="News and Community Updates"
+          intro="Updates on our programmes, partnerships and community achievements."
           action={
           <ButtonLink to="/blog" variant="outline" size="lg">
               All Stories

@@ -18,8 +18,8 @@ export function FeaturedProjects() {
     <section className="py-20 md:py-28">
       <div className={containerClass}>
         <SectionHeading
-          title="Projects & Community Activities"
-          intro="Real moments from our work, alongside proposed projects we are preparing. Details are being confirmed by the organization."
+          title="Our Programmes and Community Work"
+          intro="Explore our community activities, completed programmes and future plans across Kiambu County."
           action={
           <ButtonLink to="/projects" variant="outline" size="lg">
               All Projects

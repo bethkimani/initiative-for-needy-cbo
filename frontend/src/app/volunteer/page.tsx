@@ -51,7 +51,7 @@ export default function Volunteer() {
       <PageHero
         crumb="Volunteer"
         title="Give your time. Change a life."
-        intro="Join our volunteers serving vulnerable families around Thika. Tell us a little about yourself and we will be in touch."
+        intro="Offer your time and skills to support vulnerable communities in Kiambu County. Online sign-up is not connected yet; please contact us directly to discuss volunteering."
         photo={images.volunteersOffice} />
       
       <section className="bg-soft py-16 md:py-24">
@@ -59,7 +59,7 @@ export default function Volunteer() {
           <aside>
             <h2 className="text-2xl font-bold text-navy">What to expect</h2>
             <ol className="mt-6 space-y-5">
-              {['Register your interest below', 'We call you for a short chat', 'Attend a volunteer orientation', 'Join your first activity'].map((s, i) =>
+              {['Contact us by phone or email', 'Tell us about your interests and availability', 'Discuss how your skills could support our programmes'].map((s, i) =>
               <li key={s} className="flex gap-4">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>
                   <span className="pt-1 text-navy/80">{s}</span>

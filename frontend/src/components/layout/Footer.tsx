@@ -15,7 +15,7 @@ export function Footer() {
           <div className="max-w-md">
             <h2 className="text-2xl font-bold">Stay close to the work</h2>
             <p className="mt-2 text-sm text-white/70">
-              Occasional updates on projects, events and ways to help. No spam — unsubscribe anytime.
+              Read about our programmes, community achievements and ways to get involved. Newsletter sign-up is not connected yet.
             </p>
           </div>
           <NewsletterForm />
@@ -26,10 +26,8 @@ export function Footer() {
         <div>
           <Logo tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/70">
-            A community-focused charity in Thika, Kenya, working to improve the quality of life of local vulnerable
-            communities.
+            {site.mission}
           </p>
-          <p className="mt-5 text-xs text-white/50">Official social media profiles will be linked here once confirmed.</p>
         </div>
         <nav aria-label="Explore">
           <h3 className="text-sm font-semibold text-gold">Explore</h3>
@@ -60,17 +58,21 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-white/70">
             <li className="flex gap-2.5">
               <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
-              {site.location}
+              {site.location}<br />{site.postalAddress}
             </li>
+            {site.phones.map((phone) => (
+              <li key={phone}>
+                <a href={`tel:${phone}`} className={`flex gap-2.5 ${linkClass}`}>
+                  <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
+                  {phone}
+                </a>
+              </li>
+            ))}
             <li>
-              <a href={`tel:${site.phone}`} className={`flex gap-2.5 ${linkClass}`}>
-                <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
-                {site.phone}
-              </a>
-            </li>
-            <li className="flex gap-2.5">
+              <a href={`mailto:${site.email}`} className={`flex gap-2.5 ${linkClass}`}>
               <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
-              {site.email ?? 'Official email to be confirmed'}
+              {site.email}
+              </a>
             </li>
           </ul>
         </div>

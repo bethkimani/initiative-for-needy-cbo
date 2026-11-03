@@ -2,29 +2,29 @@ import { images } from '@/data/site';
 
 export const slides = [
 {
-  headline: 'Together, We Can Change Lives.',
-  text: 'Building stronger communities and creating hope for vulnerable people through meaningful, sustainable development initiatives.',
+  headline: 'Dignity, Equality and Opportunity for All.',
+  text: 'We empower vulnerable people through advocacy, education, health, economic empowerment and social support.',
   primary: { label: 'Discover Our Mission', to: '/about' },
   secondary: { label: 'Support Our Cause', to: '/donate' },
   photo: images.heroCommunity
 },
 {
-  headline: 'Hope Begins With a Helping Hand.',
-  text: 'Join us in bringing opportunity, dignity, and practical support to people and families who need it most.',
+  headline: 'Supporting Vulnerable Children and Families.',
+  text: 'Our Little Lights programme provides home-based care, nutritious meals, mentorship, education, life skills and play.',
   primary: { label: 'Become a Volunteer', to: '/volunteer' },
   secondary: { label: 'Donate Today', to: '/donate' },
   photo: images.heroVolunteers
 },
 {
-  headline: 'Stronger Communities. Brighter Futures.',
-  text: 'Your partnership can help create lasting change through community-led initiatives across Kenya.',
+  headline: 'Skills and Opportunity for Young People.',
+  text: 'Together with KISSE College, we supported 77 young people from vulnerable families to complete vocational training.',
   primary: { label: 'Explore Our Projects', to: '/projects' },
   secondary: { label: 'Partner With Us', to: '/partnerships' },
   photo: images.heroEducation
 },
 {
-  headline: 'Every Contribution Makes a Difference.',
-  text: 'Together, we can turn compassion into action and build a better future for vulnerable communities.',
+  headline: 'A Community Where Nobody Is Left Behind.',
+  text: 'We work with communities across Kiambu County to support children, persons with disabilities, widows, youth and older people.',
   primary: { label: 'Make a Difference', to: '/donate' },
   secondary: { label: 'Contact Our Team', to: '/contact' },
   photo: images.teamOffice

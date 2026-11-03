@@ -13,10 +13,10 @@ export function FinalCTA() {
       <div className="absolute inset-0 -z-10 bg-navy/75" aria-hidden="true" />
       <Reveal className={`${containerClass} text-center`}>
         <h2 className="mx-auto max-w-3xl text-4xl font-extrabold leading-tight text-white md:text-5xl">
-          Be Part of Something That Changes Lives.
+          Help Build a Community That Leaves Nobody Behind.
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg text-white/80">
-          Your time, support, and partnership can help build stronger communities and brighter futures.
+          Join us in empowering vulnerable people across Kiambu County through education, health, advocacy and social support.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <ButtonLink to="/donate" variant="red" size="lg">

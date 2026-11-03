@@ -1,7 +1,6 @@
 import React from 'react';
 import { approachItems } from '@/data/values';
 import { containerClass } from '@/utils/styles';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
@@ -11,8 +10,8 @@ export function Approach() {
       <div className={containerClass}>
         <SectionHeading
           tone="light"
-          title="Working Together for Lasting Change."
-          intro="How we work matters as much as what we do. These principles guide every activity, partnership and shilling." />
+          title="Our Core Values"
+          intro="Integrity, honesty, caring, accountability, compassion, equity and respect for human dignity guide our work." />
         
         <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {approachItems.map((item, i) => {
@@ -26,7 +25,6 @@ export function Approach() {
 
           })}
         </div>
-        <DraftNote className="mt-12">Proposed messaging themes — awaiting approval by the organization.</DraftNote>
       </div>
     </section>);
 

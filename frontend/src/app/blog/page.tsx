@@ -8,7 +8,6 @@ import { images } from '@/data/site';
 import { formatDate } from '@/utils/format';
 import { buttonClasses, containerClass, inputClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { ArticleCard } from '@/components/cards/ArticleCard';
 
 const PAGE_SIZE = 3;
@@ -32,14 +31,12 @@ export default function Blog() {
     <>
       <PageHero
         crumb="News & Blog"
-        title="Stories of Hope, Progress, and Community Impact."
-        intro="News, project updates and stories from the people and places we serve."
+        title="News and Community Updates"
+        intro="Updates on our programmes, partnerships and community achievements."
         photo={images.kidsCentre} />
       
       <section className="py-16 md:py-24">
         <div className={containerClass}>
-          <DraftNote className="mb-10">Sample articles for layout only — they will be replaced with approved content before publication.</DraftNote>
-
           <article className="group relative grid overflow-hidden rounded-3xl bg-soft lg:grid-cols-2">
             <img src={featured.photo.src} alt={featured.photo.alt} className="aspect-[16/10] h-full w-full object-cover lg:aspect-auto" />
             <div className="flex flex-col justify-center p-8 md:p-12">

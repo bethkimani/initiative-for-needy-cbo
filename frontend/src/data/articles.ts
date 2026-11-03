@@ -2,106 +2,83 @@ import type { Article } from '@/types/content';
 import { images } from '@/data/site';
 
 export const articles: Article[] = [
-{
-  slug: 'a-day-of-shared-meals',
-  title: 'A Day of Shared Meals With Children in Thika',
-  category: 'Community Stories',
-  date: '2026-09-12',
-  author: 'Communications Team',
-  excerpt: 'Warm food, laughter and time together — a look at one of our community meal days with young children.',
-  content: [
-  'Some of our most meaningful days are the simplest ones. On this community meal day, our team and volunteers set up tables, served warm food and simply spent time with the children and their caregivers.',
-  'Moments like these remind us why we exist: to improve the quality of life of local vulnerable communities, one practical step at a time.',
-  'This article is a sample prepared for layout purposes. The organization will replace it with an approved story, including verified details and consent for any images used.'],
-
-  photo: images.feeding,
-  featured: true
-},
-{
-  slug: 'food-and-essentials-delivered',
-  title: 'Food and Essentials Delivered to Families in Need',
-  category: 'Project Updates',
-  date: '2026-08-20',
-  author: 'Programmes Team',
-  excerpt: 'Volunteers gathered food staples and household items and delivered them directly to families.',
-  content: [
-  'Thanks to the generosity of well-wishers, our volunteers gathered bags of food staples and household essentials and delivered them to families in need.',
-  'This article is a sample prepared for layout purposes and will be replaced with an approved update.'],
-
-  photo: images.foodDonation
-},
-{
-  slug: 'meet-our-volunteers',
-  title: 'Meet the Volunteers Behind Our Kamande Office',
-  category: 'Volunteer Stories',
-  date: '2026-07-30',
-  author: 'Volunteer Desk',
-  excerpt: 'The people in the bright vests — who they are and why they give their time.',
-  content: [
-  'Our volunteers are neighbours, students and professionals who give their time to serve the community.',
-  'This article is a sample prepared for layout purposes and will be replaced with approved volunteer stories.'],
-
-  photo: images.volunteersOffice
-},
-{
-  slug: 'nest-of-love-visit',
-  title: 'An Evening at the Nest of Love Children’s Centre',
-  category: 'Community Stories',
-  date: '2026-06-15',
-  author: 'Communications Team',
-  excerpt: 'Our team spent an evening with the children and caregivers at the Nest of Love Children’s Centre.',
-  content: [
-  'Our team visited the Nest of Love Children’s Centre to share time, encouragement and support with the children.',
-  'This article is a sample prepared for layout purposes and will be replaced with an approved story.'],
-
-  photo: images.kidsCentre
-},
-{
-  slug: 'planning-community-fun-day',
-  title: 'Planning Our Next Community Fun Day',
-  category: 'Charity Events',
-  date: '2026-05-28',
-  author: 'Events Team',
-  excerpt: 'We are preparing a day of togetherness for families — and we would love your help.',
-  content: [
-  'Community events bring families together and help us listen to what our neighbours need most.',
-  'This article is a sample prepared for layout purposes and will be replaced with approved event news.'],
-
-  photo: images.blogEvent
-},
-{
-  slug: 'why-education-support-matters',
-  title: 'Why Education Support Matters for Vulnerable Families',
-  category: 'Education and Empowerment',
-  date: '2026-05-02',
-  author: 'Programmes Team',
-  excerpt: 'Small barriers like uniforms and books keep children out of class. Here is how we hope to help.',
-  content: [
-  'For many families, the cost of uniforms, books and supplies stands between a child and the classroom.',
-  'This article is a sample prepared for layout purposes and will be replaced with approved content.'],
-
-  photo: images.heroEducation
-},
-{
-  slug: 'welcome-to-our-new-website',
-  title: 'Welcome to Our New Website',
-  category: 'Announcements',
-  date: '2026-10-01',
-  author: 'Communications Team',
-  excerpt: 'A new home online to share our work, our stories and the many ways you can get involved.',
-  content: [
-  'We are excited to share our new website — a place to learn about our mission, follow our projects and find ways to support vulnerable communities.',
-  'This article is a sample prepared for layout purposes and will be replaced with an approved announcement.'],
-
-  photo: images.teamOffice
-}];
-
+  {
+    slug: '77-youth-graduate-vocational-training',
+    title: '77 Young People Graduate from Vocational Training',
+    category: 'Education and Empowerment',
+    date: '2025-02-11',
+    author: 'Initiative for the Needy',
+    excerpt: 'Young people from vulnerable families completed short courses delivered in partnership with KISSE College.',
+    content: [
+      'Initiative for the Needy, in partnership with Kenya Institute of Software Engineering (KISSE) College, supported 77 young people from vulnerable families to take short vocational courses.',
+      'Training included plumbing, cake baking, pastry, hairdressing and beauty therapy, among other courses. The participants completed and graduated on 11 February 2025.',
+      'Youth empowerment through education, practical skills and income-generating activities is part of the organization’s mission.'
+    ],
+    photo: images.causeYouth,
+    featured: true
+  },
+  {
+    slug: 'older-persons-day-2024',
+    title: 'Celebrating Older People in Our Community',
+    category: 'Community Support',
+    date: '2024-10-01',
+    author: 'Initiative for the Needy',
+    excerpt: '100 older people from Kiganjo, Athena and Kiang’ombe came together for the International Day of Older Persons.',
+    content: [
+      'On 1 October 2024, Initiative for the Needy marked the International Day of Older Persons by bringing together 100 older people from Kiganjo, Athena and Kiang’ombe.',
+      'The organization prepared food and gave gifts to recognize the contribution older people have made over the years.',
+      'The gathering also created an opportunity to identify issues affecting older people in the community and discuss how they can be addressed.'
+    ],
+    photo: images.causeElderly
+  },
+  {
+    slug: 'food-support-for-kiandutu-older-people',
+    title: 'Food Support for Older People in Kiandutu',
+    category: 'Community Support',
+    date: '2023-05',
+    author: 'Initiative for the Needy',
+    excerpt: 'The organization provided food supplies to 100 older people from Kiandutu Slums.',
+    content: [
+      'In May 2023, Initiative for the Needy provided food supplies to 100 older people from Kiandutu Slums.',
+      'This work builds on an earlier visit to older people and persons with disabilities in Kiandutu in December 2020, when food was also provided.',
+      'Supporting older people and persons with disabilities is part of the organization’s work to promote dignity, equality and access to basic needs.'
+    ],
+    photo: images.foodDonation
+  },
+  {
+    slug: 'first-physical-office-kiganjo',
+    title: 'Opening Our First Physical Office in Kiganjo',
+    category: 'Organization Updates',
+    date: '2023-12',
+    author: 'Initiative for the Needy',
+    excerpt: 'The organization opened its first physical office at Kiganjo Corner 3 near the bypass.',
+    content: [
+      'Initiative for the Needy opened its first physical office in December 2023 at Kiganjo Corner 3 near the bypass in Thika.',
+      'The office is on Kiganjo-Main Road at Kwa Kamande Stage, next to Gamoyoni Driving School.',
+      'The organization was initiated in January 2020 and registered on 16 September 2022 under the Ministry of Labour and Social Protection, State Department.'
+    ],
+    photo: images.teamOffice
+  },
+  {
+    slug: 'supporting-childrens-homes',
+    title: 'Supporting Children’s Homes Across Kiambu County',
+    category: 'Children and Families',
+    date: '2025-07',
+    author: 'Initiative for the Needy',
+    excerpt: 'Visits to children’s homes have included food, clothing, firewood and other practical support.',
+    content: [
+      'Initiative for the Needy has visited and supported The Ark Children’s Home, Salem Rescue Children Home, Shades Children Foundation, Ottofman Children Center and Nest of Love Children Centre.',
+      'Support has included food, clothes, firewood and other needed items. Reported visits span from 2019 to July 2025.',
+      'The organization’s Little Lights programme also supports orphans and vulnerable children through home-based care, meals, mentorship, education and life-skills activities.'
+    ],
+    photo: images.kidsCentre
+  }
+];
 
 export const articleCategories = [
-'All',
-'Community Stories',
-'Project Updates',
-'Charity Events',
-'Volunteer Stories',
-'Education and Empowerment',
-'Announcements'];
+  'All',
+  'Education and Empowerment',
+  'Community Support',
+  'Organization Updates',
+  'Children and Families'
+];

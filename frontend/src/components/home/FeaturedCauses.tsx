@@ -17,8 +17,8 @@ export function FeaturedCauses() {
     <section className="bg-soft py-20 md:py-28">
       <div className={containerClass}>
         <SectionHeading
-          title="Causes That Deserve Our Attention."
-          intro="The areas where we focus our time and resources. Causes are proposed for approval and can be renamed, added or removed by the organization."
+          title="Who We Support"
+          intro="Our work supports orphans and vulnerable children, street-connected children, persons with disabilities, widows, youth, young parents and older people."
           action={
           <ButtonLink to="/causes" variant="red" size="lg">
               Support Our Causes

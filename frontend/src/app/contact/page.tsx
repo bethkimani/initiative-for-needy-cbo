@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
-import { ClockIcon, HandshakeIcon, LoaderCircleIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
+import { HandshakeIcon, LoaderCircleIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { useFormSubmission } from '@/hooks/useFormSubmission';
 import { images, site } from '@/data/site';
 import { buttonClasses, containerClass, inputClass } from '@/utils/styles';
@@ -39,11 +40,16 @@ export default function Contact() {
   );
   const { values, errors, setField } = form;
 
-  const info = [
-  { icon: MapPinIcon, label: 'Visit us', value: site.location },
-  { icon: PhoneIcon, label: 'Call us', value: site.phone, href: `tel:${site.phone}` },
-  { icon: MailIcon, label: 'Email', value: site.email ?? 'Official email to be confirmed' },
-  { icon: ClockIcon, label: 'Office hours', value: 'Monday – Friday · hours to be confirmed' }];
+  const info: { icon: LucideIcon; label: string; value: string; href?: string }[] = [
+  { icon: MapPinIcon, label: 'Office', value: site.location },
+  { icon: MapPinIcon, label: 'Postal address', value: site.postalAddress },
+  ...site.phones.map((phone, index) => ({
+    icon: PhoneIcon,
+    label: index === 0 ? 'Call us' : 'Alternate phone',
+    value: phone,
+    href: `tel:${phone}`
+  })),
+  { icon: MailIcon, label: 'Email', value: site.email, href: `mailto:${site.email}` }];
 
 
   return (
@@ -83,7 +89,7 @@ export default function Contact() {
             <div className="mt-10 rounded-3xl bg-navy p-7 text-white">
               <HandshakeIcon className="h-7 w-7 text-gold" aria-hidden="true" />
               <h2 className="mt-4 text-xl font-bold">Partnership or volunteering?</h2>
-              <p className="mt-2 text-sm text-white/70">Use our dedicated forms for a faster response.</p>
+              <p className="mt-2 text-sm text-white/70">Our online forms are not connected yet. For a response, please call or email us directly.</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <ButtonLink to="/partnerships" variant="light" size="sm">
                   Partnership inquiry
@@ -96,17 +102,17 @@ export default function Contact() {
 
             <div className="mt-10 flex aspect-[16/10] flex-col items-center justify-center rounded-3xl border border-dashed border-line bg-soft p-6 text-center">
               <MapPinIcon className="h-8 w-8 text-charity" aria-hidden="true" />
-              <p className="mt-3 font-semibold text-navy">Map coming soon</p>
+              <p className="mt-3 font-semibold text-navy">Find our office</p>
               <p className="mt-1 max-w-xs text-sm text-navy/60">
-                An interactive map will be embedded once our precise office location is confirmed.
+                {site.location}
               </p>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Kamande+Stage+Thika+Kenya"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.location)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 text-sm font-semibold text-brand hover:underline">
                 
-                Search Kamande Stage on Google Maps
+                Search this location on Google Maps
               </a>
             </div>
           </div>
