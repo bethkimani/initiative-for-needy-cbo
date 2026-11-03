@@ -7,7 +7,6 @@ import { containerClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
 import { Reveal } from '@/components/ui/Reveal';
 import { ButtonLink } from '@/components/ui/ButtonLink';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 
 const details = [
 {
@@ -55,7 +54,6 @@ export default function GetInvolved() {
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                   <div className={`relative ${flip ? 'lg:order-2' : ''}`}>
                     <img src={d.photo.src} alt={d.photo.alt} loading="lazy" className="aspect-[4/3] w-full rounded-3xl object-cover" />
-                    <PhotoTag photo={d.photo} className="absolute bottom-4 left-4" />
                   </div>
                   <div>
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-light text-brand">

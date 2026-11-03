@@ -4,7 +4,6 @@ import { ArrowRightIcon } from 'lucide-react';
 import { causes } from '@/data/causes';
 import { containerClass } from '@/utils/styles';
 import { ButtonLink } from '@/components/ui/ButtonLink';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
@@ -38,7 +37,6 @@ export function FeaturedCauses() {
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
               
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent" aria-hidden="true" />
-              <PhotoTag photo={featured.photo} className="absolute right-4 top-4" />
               <div className="relative p-8">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-charity text-white">
                   <FeaturedIcon className="h-5 w-5" aria-hidden="true" />

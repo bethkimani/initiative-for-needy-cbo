@@ -16,8 +16,7 @@ export const team: TeamMember[] = [
     initials: 'RA',
     photo: {
       src: '/Roseline.jpeg',
-      alt: 'Roseline Awino',
-      real: true
+      alt: 'Roseline Awino'
     },
     bio: "Roseline coordinates the organization's community programmes and the team delivering them.",
     focus: 'Programmes'
@@ -28,8 +27,7 @@ export const team: TeamMember[] = [
     initials: 'LM',
     photo: {
       src: '/lukas.jpeg',
-      alt: 'Lukas Mwangi',
-      real: true
+      alt: 'Lukas Mwangi'
     },
     bio: "Lukas manages the organization's accounts and supports transparent use of resources.",
     focus: 'Finance & accountability'
@@ -40,8 +38,7 @@ export const team: TeamMember[] = [
     initials: 'JK',
     photo: {
       src: '/john.jpeg',
-      alt: 'John Kamande',
-      real: true
+      alt: 'John Kamande'
     },
     bio: "John supports the organization's activities in the community as a volunteer.",
     focus: 'Community volunteering'

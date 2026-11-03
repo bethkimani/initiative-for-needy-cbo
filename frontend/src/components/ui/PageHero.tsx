@@ -6,7 +6,6 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronRightIcon } from 'lucide-react';
 import type { Photo } from '@/types/content';
 import { containerClass } from '@/utils/styles';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 
 type PageHeroProps = {
   title: string;
@@ -59,7 +58,6 @@ export function PageHero({ title, intro, photo, crumb, children }: PageHeroProps
         }
         {children && <div className="mt-8">{children}</div>}
       </div>
-      <PhotoTag photo={photo} className="absolute bottom-4 right-4" />
     </section>);
 
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Cause } from '@/types/content';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 
 type CauseCardProps = {
   cause: Cause;
@@ -19,7 +18,6 @@ export function CauseCard({ cause }: CauseCardProps) {
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
         
-        <PhotoTag photo={cause.photo} className="absolute bottom-3 left-3" />
         <span className="absolute -bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-brand text-white ring-4 ring-white">
           <Icon className="h-5 w-5" aria-hidden="true" />
         </span>

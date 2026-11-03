@@ -6,7 +6,6 @@ import { ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import { slides } from '@/data/slides';
 import { containerClass } from '@/utils/styles';
 import { ButtonLink } from '@/components/ui/ButtonLink';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 
 const INTERVAL = 6500;
 const ease = [0.23, 1, 0.32, 1] as const;
@@ -121,7 +120,6 @@ export function HeroCarousel() {
           )}
         </div>
         <div className="flex items-center gap-3">
-          <PhotoTag photo={slide.photo} className="hidden sm:inline-block" />
           <button
             type="button"
             onClick={() => go(index - 1)}

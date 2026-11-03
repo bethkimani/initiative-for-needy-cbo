@@ -4,7 +4,6 @@ import React, { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon, XIcon } from 'lucide-react';
 import type { GalleryItem } from '@/types/content';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 
 type LightboxProps = {
   items: GalleryItem[];
@@ -81,8 +80,7 @@ export function Lightbox({ items, index, onClose, onChange }: LightboxProps) {
             <img src={item.photo.src} alt={item.photo.alt} className="mx-auto max-h-[72svh] max-w-full rounded-2xl object-contain sm:max-h-[80vh]" />
             <figcaption className="mt-4 flex flex-col items-start justify-between gap-3 text-sm text-white/80 sm:flex-row sm:items-center">
               <span>{item.caption}</span>
-              <span className="flex items-center gap-3 self-end sm:self-auto">
-                <PhotoTag photo={item.photo} />
+              <span className="self-end sm:self-auto">
                 {index + 1} / {items.length}
               </span>
             </figcaption>
