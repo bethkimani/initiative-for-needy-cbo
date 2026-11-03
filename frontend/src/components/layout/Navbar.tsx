@@ -62,7 +62,7 @@ export function Navbar() {
       scrolled ? 'shadow-[0_8px_24px_-14px_rgba(21,36,58,0.3)]' : 'border-b border-line'}`
       }>
       
-      <div className={`${containerClass} flex h-20 items-center justify-between gap-4`}>
+      <div className={`${containerClass} flex min-h-20 items-center justify-between gap-2 sm:gap-4`}>
         <Logo />
         <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex items-center">
@@ -92,11 +92,13 @@ export function Navbar() {
             })}
           </ul>
         </nav>
-        <div className="flex items-center gap-2">
-          <ButtonLink to="/donate" variant="red" className="hidden sm:inline-flex">
-            <HeartIcon className="h-4 w-4" aria-hidden="true" />
-            Donate Now
-          </ButtonLink>
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+          <div className="hidden sm:block">
+            <ButtonLink to="/donate" variant="red" size="md" className="px-4 lg:px-6">
+              <HeartIcon className="h-4 w-4" aria-hidden="true" />
+              Donate Now
+            </ButtonLink>
+          </div>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -126,6 +128,7 @@ export function Navbar() {
               <li key={link.to}>
                     <Link
                   href={link.to}
+                  onClick={() => setOpen(false)}
                   className={`block rounded-xl px-4 py-3 text-base font-semibold transition-colors duration-150 ${
                   isActive(link.to) ? 'bg-brand-light text-brand' : 'text-navy hover:bg-soft'}`
                   }>
@@ -144,10 +147,15 @@ export function Navbar() {
                   Become a Volunteer
                 </Link>
               </div>
-              <a href={`tel:${site.phone}`} className="mt-6 flex items-center gap-2 text-sm text-navy/70">
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {site.phones.map((phone) => <a key={phone} href={`tel:${phone}`} className="flex min-h-11 items-center gap-2 break-all text-base text-navy/70">
                 <PhoneIcon className="h-4 w-4 text-brand" aria-hidden="true" />
-                {site.phone}
+                {phone}
+              </a>)}
+              <a href={`mailto:${site.email}`} className="flex min-h-11 min-w-0 items-center gap-2 break-all text-base text-navy/70">
+                {site.email}
               </a>
+              </div>
             </nav>
           </motion.div>
         }

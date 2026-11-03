@@ -23,7 +23,7 @@ export function AboutIntro() {
           <div className="absolute -bottom-10 -right-2 hidden w-44 overflow-hidden rounded-2xl border-[6px] border-white shadow-lift sm:block md:w-52">
             <img src={images.foodDonation.src} alt={images.foodDonation.alt} loading="lazy" className="aspect-[3/4] w-full object-cover" />
           </div>
-          <div className="absolute -left-3 top-6 rounded-2xl bg-white px-5 py-4 shadow-lift">
+          <div className="absolute left-2 top-4 rounded-2xl bg-white px-4 py-3 shadow-lift sm:-left-3 sm:top-6 sm:px-5 sm:py-4">
             <p className="font-display text-sm font-bold text-navy">Kiganjo-Main Road</p>
             <p className="text-xs text-navy/60">Kwa Kamande Stage, Thika</p>
           </div>

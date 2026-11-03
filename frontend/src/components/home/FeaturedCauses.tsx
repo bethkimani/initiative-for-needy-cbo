@@ -29,7 +29,7 @@ export function FeaturedCauses() {
           <Reveal>
             <Link
               href={`/causes/${featured.slug}`}
-              className="group relative flex h-full min-h-[460px] flex-col justify-end overflow-hidden rounded-3xl">
+              className="group relative flex h-full min-h-[360px] flex-col justify-end overflow-hidden rounded-3xl sm:min-h-[460px]">
               
               <img
                 src={featured.photo.src}
@@ -63,10 +63,10 @@ export function FeaturedCauses() {
                       href={`/causes/${cause.slug}`}
                       className="group flex items-center gap-5 p-5 transition-colors duration-150 hover:bg-soft">
                       
-                      <div className="relative h-24 w-28 shrink-0 overflow-hidden rounded-xl">
+                      <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-28">
                         <img src={cause.photo.src} alt="" loading="lazy" className="h-full w-full object-cover" />
                       </div>
-                      <div className="min-w-0 flex-1">
+                      <div className="min-w-0 flex-1 break-words">
                         <h3 className="flex items-center gap-2 font-bold text-navy">
                           <Icon className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
                           {cause.title}

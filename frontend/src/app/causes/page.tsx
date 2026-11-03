@@ -32,7 +32,7 @@ export default function Causes() {
 
       <section className="py-20 md:py-28">
         <div className={containerClass}>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {causes.map((c, i) =>
             <Reveal key={c.slug} delay={i % 3 * 0.05}>
                 <CauseCard cause={c} />
@@ -45,7 +45,7 @@ export default function Causes() {
       <section className="bg-soft py-20 md:py-28">
         <div className={containerClass}>
           <SectionHeading title="Our Areas of Support" intro="We support community programmes in response to local needs." />
-          <div className="grid gap-10 md:grid-cols-3">
+          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
             {fundUses.map((f) => {
               const Icon = f.icon;
               return (

@@ -75,13 +75,13 @@ export function Lightbox({ items, index, onClose, onChange }: LightboxProps) {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
-          className="relative max-h-full max-w-5xl"
+          className="relative max-h-full w-full max-w-5xl"
           onClick={(e) => e.stopPropagation()}>
           
-            <img src={item.photo.src} alt={item.photo.alt} className="max-h-[80vh] w-auto rounded-2xl object-contain" />
-            <figcaption className="mt-4 flex items-center justify-between gap-4 text-sm text-white/80">
+            <img src={item.photo.src} alt={item.photo.alt} className="mx-auto max-h-[72svh] max-w-full rounded-2xl object-contain sm:max-h-[80vh]" />
+            <figcaption className="mt-4 flex flex-col items-start justify-between gap-3 text-sm text-white/80 sm:flex-row sm:items-center">
               <span>{item.caption}</span>
-              <span className="flex items-center gap-3">
+              <span className="flex items-center gap-3 self-end sm:self-auto">
                 <PhotoTag photo={item.photo} />
                 {index + 1} / {items.length}
               </span>

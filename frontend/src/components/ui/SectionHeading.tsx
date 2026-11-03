@@ -16,7 +16,7 @@ export function SectionHeading({ title, intro, align = 'left', tone = 'dark', ac
       className={`mb-10 flex flex-col gap-6 md:mb-14 ${centered ? 'items-center text-center' : 'md:flex-row md:items-end md:justify-between'}`}>
       
       <div className={centered ? 'max-w-2xl' : 'max-w-2xl'}>
-        <h2 className={`text-3xl font-bold leading-tight md:text-4xl ${tone === 'light' ? 'text-white' : 'text-navy'}`}>
+        <h2 className={`break-words text-[clamp(1.75rem,5vw,2.25rem)] font-bold leading-tight md:text-4xl ${tone === 'light' ? 'text-white' : 'text-navy'}`}>
           {title}
         </h2>
         {intro &&
@@ -25,7 +25,7 @@ export function SectionHeading({ title, intro, align = 'left', tone = 'dark', ac
           </p>
         }
       </div>
-      {action && <div className="shrink-0">{action}</div>}
+      {action && <div className="w-full sm:w-auto sm:shrink-0">{action}</div>}
     </Reveal>);
 
 }

@@ -77,7 +77,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
       <section className="bg-soft py-20">
           <div className={containerClass}>
             <h2 className="mb-10 text-2xl font-bold text-navy">Related projects</h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
               {related.map((p) =>
             <ProjectCard key={p.slug} project={p} />
             )}

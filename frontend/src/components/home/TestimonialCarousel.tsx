@@ -53,7 +53,7 @@ export function TestimonialCarousel() {
             </button>
           </div>
         </div>
-        <div className="relative min-h-[320px] rounded-3xl bg-white p-8 shadow-soft md:p-12" aria-live="polite">
+        <div className="relative min-h-[320px] rounded-3xl bg-white p-6 shadow-soft sm:p-8 md:p-12" aria-live="polite">
           <QuoteIcon className="h-10 w-10 text-charity" aria-hidden="true" />
           <AnimatePresence mode="wait">
             <motion.figure
@@ -79,7 +79,7 @@ export function TestimonialCarousel() {
               </figcaption>
             </motion.figure>
           </AnimatePresence>
-          <div className="absolute bottom-8 right-8 flex gap-1.5">
+          <div className="absolute bottom-6 right-6 flex gap-1.5 sm:bottom-8 sm:right-8">
             {testimonials.map((t, i) =>
             <button
               key={t.role}

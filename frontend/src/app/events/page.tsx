@@ -32,7 +32,7 @@ export default function Events() {
                 role="tab"
                 aria-selected={tab === t}
                 onClick={() => setTab(t)}
-                className={`whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold capitalize transition-colors duration-150 ${
+                className={`min-h-11 whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold capitalize transition-colors duration-150 ${
                 tab === t ? 'bg-brand text-white' : 'text-navy/70 hover:text-navy'}`
                 }>
                 
@@ -50,15 +50,15 @@ export default function Events() {
               const d = dateParts(e.date);
               return (
                 <li key={e.slug}>
-                    <Reveal delay={i * 0.04} className="grid gap-6 py-8 md:grid-cols-[88px_200px_1fr_auto] md:items-center">
+                    <Reveal delay={i * 0.04} className="grid min-w-0 gap-4 py-8 md:grid-cols-[88px_minmax(0,1fr)] md:gap-6 md:items-center lg:grid-cols-[88px_200px_minmax(0,1fr)_auto]">
                       <div className="flex h-[88px] w-[88px] flex-col items-center justify-center rounded-2xl bg-navy text-white">
                         <span className="font-display text-3xl font-extrabold leading-none">{d.day}</span>
                         <span className="mt-1 text-xs font-semibold uppercase text-gold">
                           {d.month} {d.year}
                         </span>
                       </div>
-                      <img src={e.photo.src} alt={e.photo.alt} loading="lazy" className="hidden aspect-[4/3] w-full rounded-xl object-cover md:block" />
-                      <div>
+                      <img src={e.photo.src} alt={e.photo.alt} loading="lazy" className="hidden aspect-[4/3] w-full rounded-xl object-cover lg:block" />
+                      <div className="min-w-0 break-words">
                         <p className="text-xs font-semibold text-charity">{e.type}</p>
                         <h2 className="mt-1 text-xl font-bold text-navy">{e.title}</h2>
                         <p className="mt-2 text-sm text-navy/70">{e.summary}</p>

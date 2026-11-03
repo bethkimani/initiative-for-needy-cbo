@@ -7,7 +7,7 @@ import { Logo } from '@/components/layout/Logo';
 import { NewsletterForm } from '@/components/layout/NewsletterForm';
 
 export function Footer() {
-  const linkClass = 'text-sm text-white/70 transition-colors duration-150 hover:text-white';
+  const linkClass = 'inline-flex min-h-11 items-center text-sm text-white/70 transition-colors duration-150 hover:text-white';
   return (
     <footer className="bg-navy text-white">
       <div className={`${containerClass} border-b border-white/10 py-12`}>
@@ -22,7 +22,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className={`${containerClass} grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]`}>
+      <div className={`${containerClass} grid gap-8 py-12 md:grid-cols-2 md:gap-10 xl:grid-cols-[1.4fr_1fr_1fr_1.2fr] xl:py-14`}>
         <div>
           <Logo tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/70">
@@ -56,9 +56,9 @@ export function Footer() {
         <div>
           <h3 className="text-sm font-semibold text-gold">Contact</h3>
           <ul className="mt-4 space-y-3 text-sm text-white/70">
-            <li className="flex gap-2.5">
+            <li className="flex min-w-0 gap-2.5 break-words">
               <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
-              {site.location}<br />{site.postalAddress}
+              <span className="min-w-0 break-words">{site.location}<br />{site.postalAddress}</span>
             </li>
             {site.phones.map((phone) => (
               <li key={phone}>

@@ -36,7 +36,7 @@ export function HeroCarousel() {
     <section
       aria-roledescription="carousel"
       aria-label="Featured highlights"
-      className="relative h-[600px] overflow-hidden bg-navy md:h-[660px] lg:h-[700px]"
+      className="relative min-h-[620px] overflow-hidden bg-navy sm:min-h-[600px] md:min-h-[660px] lg:min-h-[700px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -62,7 +62,7 @@ export function HeroCarousel() {
             src={slide.photo.src}
             alt={slide.photo.alt}
             draggable={false}
-            className="h-full w-full select-none object-cover"
+            className="h-full w-full select-none object-cover object-[center_40%]"
             initial={{ scale: reduce ? 1 : 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 7, ease: 'linear' }} />
@@ -74,20 +74,20 @@ export function HeroCarousel() {
 
       <div className="pointer-events-none absolute inset-0 flex items-center">
         <div className={containerClass}>
-          <div key={index} className="pointer-events-auto max-w-2xl" aria-live="polite">
+          <div key={index} className="pointer-events-auto max-w-2xl pb-24" aria-live="polite">
             <motion.p {...enter(0)} className="mb-4 text-sm font-semibold text-gold">
               {String(index + 1).padStart(2, '0')} — Initiative for the Needy, Thika
             </motion.p>
             <motion.h1
               {...enter(0.06)}
-              className="text-4xl font-extrabold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
+              className="break-words text-[clamp(2rem,8vw,3rem)] font-extrabold leading-[1.08] text-white lg:text-6xl">
               
               {slide.headline}
             </motion.h1>
             <motion.p {...enter(0.12)} className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
               {slide.text}
             </motion.p>
-            <motion.div {...enter(0.18)} className="mt-8 flex flex-wrap gap-3">
+            <motion.div {...enter(0.18)} className="mt-8 flex flex-col gap-3 min-[400px]:flex-row min-[400px]:flex-wrap">
               <ButtonLink to={slide.primary.to} variant="red" size="lg">
                 {slide.primary.label}
                 <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
@@ -100,7 +100,7 @@ export function HeroCarousel() {
         </div>
       </div>
 
-      <div className={`${containerClass} absolute inset-x-0 bottom-8 flex items-center justify-between`}>
+      <div className={`${containerClass} absolute inset-x-0 bottom-6 flex items-center justify-between gap-3 sm:bottom-8`}>
         <div className="flex items-center gap-2" role="tablist" aria-label="Choose slide">
           {slides.map((s, i) =>
           <button
@@ -110,7 +110,7 @@ export function HeroCarousel() {
             aria-selected={i === index}
             aria-label={`Slide ${i + 1}: ${s.headline}`}
             onClick={() => go(i)}
-            className="flex h-6 items-center">
+            className="flex h-11 min-w-11 items-center justify-center">
             
               <span
               className={`block h-1.5 rounded-full transition-[width,background-color] duration-200 ease-out ${

@@ -18,11 +18,11 @@ export function ImpactStats({ id }: ImpactStatsProps) {
             Our work includes vocational training, support for older people, children’s home outreach and programmes for vulnerable groups.
           </p>
         </Reveal>
-        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-white/15">
+        <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl bg-white/15 sm:grid-cols-2">
           {impactStats.map((stat, i) => {
             const Icon = stat.icon;
             return (
-              <Reveal key={stat.label} delay={i * 0.05} className="bg-brand p-6 md:p-8">
+              <Reveal key={stat.label} delay={i * 0.05} className="min-w-0 bg-brand p-6 md:p-8">
                 <Icon className="h-6 w-6 text-gold" aria-hidden="true" />
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="mt-4 font-display text-4xl font-extrabold md:text-5xl">
@@ -31,7 +31,7 @@ export function ImpactStats({ id }: ImpactStatsProps) {
                 <dd className="mt-1 text-base font-semibold" aria-hidden="true">
                   {stat.label}
                 </dd>
-                <dd className="text-sm text-white/65">{stat.detail}</dd>
+                <dd className="text-sm leading-relaxed text-white/80">{stat.detail}</dd>
               </Reveal>);
 
           })}

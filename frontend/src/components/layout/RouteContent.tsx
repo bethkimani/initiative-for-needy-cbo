@@ -27,7 +27,7 @@ export function RouteContent({ children }: { children: React.ReactNode }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
-        className="flex-1 scroll-mt-24"
+        className="min-w-0 flex-1 scroll-mt-24"
       >
         <Suspense fallback={null}>{children}</Suspense>
       </motion.main>

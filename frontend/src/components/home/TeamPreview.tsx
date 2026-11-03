@@ -19,7 +19,7 @@ export function TeamPreview() {
             </ButtonLink>
           } />
         
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
           {team.map((m, i) =>
           <Reveal key={m.name} delay={i * 0.05}>
               <TeamCard member={m} />

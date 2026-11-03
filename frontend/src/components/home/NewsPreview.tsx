@@ -54,9 +54,9 @@ export function NewsPreview() {
                 <Reveal delay={i * 0.05}>
                   <Link
                   href={`/blog/${a.slug}`}
-                  className="group flex gap-5 rounded-2xl bg-white p-4 transition-shadow duration-200 hover:shadow-soft">
+                  className="group flex min-w-0 gap-3 rounded-2xl bg-white p-3 transition-shadow duration-200 hover:shadow-soft sm:gap-5 sm:p-4">
                   
-                    <img src={a.photo.src} alt="" loading="lazy" className="h-24 w-28 shrink-0 rounded-xl object-cover" />
+                    <img src={a.photo.src} alt="" loading="lazy" className="h-20 w-20 shrink-0 rounded-xl object-cover sm:h-24 sm:w-28" />
                     <div className="min-w-0">
                       <p className="text-xs font-semibold text-charity">{a.category}</p>
                       <h3 className="mt-1 font-bold leading-snug text-navy transition-colors duration-150 group-hover:text-brand">

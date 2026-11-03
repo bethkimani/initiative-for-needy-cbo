@@ -28,7 +28,7 @@ export function ChoiceChips({ id, label, options, selected, onChange, error }: C
               type="button"
               aria-pressed={on}
               onClick={() => toggle(opt)}
-              className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm font-medium transition-colors duration-150 ${
+              className={`inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm font-medium transition-colors duration-150 ${
               on ? 'border-brand bg-brand text-white' : 'border-line bg-white text-navy/75 hover:border-brand/50'}`
               }>
               

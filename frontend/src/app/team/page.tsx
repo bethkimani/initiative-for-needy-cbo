@@ -38,7 +38,7 @@ export default function Team() {
             </div>
             <div>
               <p className="text-sm font-semibold text-charity">{lead.role}</p>
-              <h2 className="mt-2 text-4xl font-extrabold text-navy">{lead.name}</h2>
+              <h2 className="mt-2 break-words text-[clamp(1.75rem,7vw,2.25rem)] font-extrabold text-navy">{lead.name}</h2>
               <p className="mt-5 text-lg leading-relaxed text-navy/75">{lead.bio}</p>
               <dl className="mt-8 border-t border-line pt-6">
                 <dt className="text-xs text-navy/55">Focus</dt>
@@ -47,7 +47,7 @@ export default function Team() {
             </div>
           </Reveal>
 
-          <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
             {others.map((m, i) =>
             <Reveal key={m.name} delay={i * 0.05}>
                 <TeamCard member={m} />
