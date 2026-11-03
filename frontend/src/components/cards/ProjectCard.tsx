@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRightIcon, CalendarDaysIcon, MapPinIcon } from 'lucide-react';
 import type { Project, ProjectStatus } from '@/types/content';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 
 const statusStyles: Record<ProjectStatus, string> = {
   Completed: 'bg-brand text-white',
@@ -27,7 +26,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[project.status]}`}>
           {project.status}
         </span>
-        <PhotoTag photo={project.photo} className="absolute bottom-3 right-3" />
       </div>
       <div className="flex flex-1 flex-col p-6">
         <p className="text-xs font-semibold text-charity">{project.category}</p>

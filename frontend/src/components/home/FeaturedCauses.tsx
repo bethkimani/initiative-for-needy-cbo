@@ -4,7 +4,6 @@ import { ArrowRightIcon } from 'lucide-react';
 import { causes } from '@/data/causes';
 import { containerClass } from '@/utils/styles';
 import { ButtonLink } from '@/components/ui/ButtonLink';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
@@ -29,7 +28,7 @@ export function FeaturedCauses() {
           <Reveal>
             <Link
               href={`/causes/${featured.slug}`}
-              className="group relative flex h-full min-h-[460px] flex-col justify-end overflow-hidden rounded-3xl">
+              className="group relative flex h-full min-h-[360px] flex-col justify-end overflow-hidden rounded-3xl sm:min-h-[460px]">
               
               <img
                 src={featured.photo.src}
@@ -38,7 +37,6 @@ export function FeaturedCauses() {
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
               
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent" aria-hidden="true" />
-              <PhotoTag photo={featured.photo} className="absolute right-4 top-4" />
               <div className="relative p-8">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-charity text-white">
                   <FeaturedIcon className="h-5 w-5" aria-hidden="true" />
@@ -63,10 +61,10 @@ export function FeaturedCauses() {
                       href={`/causes/${cause.slug}`}
                       className="group flex items-center gap-5 p-5 transition-colors duration-150 hover:bg-soft">
                       
-                      <div className="relative h-24 w-28 shrink-0 overflow-hidden rounded-xl">
+                      <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-28">
                         <img src={cause.photo.src} alt="" loading="lazy" className="h-full w-full object-cover" />
                       </div>
-                      <div className="min-w-0 flex-1">
+                      <div className="min-w-0 flex-1 break-words">
                         <h3 className="flex items-center gap-2 font-bold text-navy">
                           <Icon className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
                           {cause.title}

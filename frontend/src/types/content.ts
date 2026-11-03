@@ -3,8 +3,6 @@ import type { LucideIcon } from 'lucide-react';
 export type Photo = {
   src: string;
   alt: string;
-  /** true = genuine photo supplied by the organization; false = illustrative placeholder */
-  real: boolean;
 };
 
 export type CtaLink = {label: string;to: string;};

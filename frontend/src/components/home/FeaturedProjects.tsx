@@ -33,7 +33,7 @@ export function FeaturedProjects() {
             type="button"
             aria-pressed={filter === f}
             onClick={() => setFilter(f)}
-            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
+            className={`min-h-11 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
             filter === f ? 'bg-navy text-white' : 'bg-soft text-navy/70 hover:text-navy'}`
             }>
             

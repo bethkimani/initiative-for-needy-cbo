@@ -3,7 +3,6 @@ import { HeartIcon } from 'lucide-react';
 import { images } from '@/data/site';
 import { containerClass } from '@/utils/styles';
 import { ButtonLink } from '@/components/ui/ButtonLink';
-import { PhotoTag } from '@/components/ui/PhotoTag';
 import { Reveal } from '@/components/ui/Reveal';
 
 export function FinalCTA() {
@@ -31,7 +30,6 @@ export function FinalCTA() {
           </ButtonLink>
         </div>
       </Reveal>
-      <PhotoTag photo={images.ctaBg} className="absolute bottom-4 right-4" />
     </section>);
 
 }

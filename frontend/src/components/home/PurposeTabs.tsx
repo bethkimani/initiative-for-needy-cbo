@@ -20,7 +20,7 @@ export function PurposeTabs() {
           aria-selected={t.id === active}
           aria-controls={`panel-${t.id}`}
           onClick={() => setActive(t.id)}
-          className={`relative whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
+          className={`relative min-h-11 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
           t.id === active ? 'text-white' : 'text-navy/70 hover:text-navy'}`
           }>
           

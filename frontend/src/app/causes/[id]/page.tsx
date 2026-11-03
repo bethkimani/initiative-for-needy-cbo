@@ -65,7 +65,7 @@ export default async function CauseDetail({ params }: CausePageProps) {
       <section className="bg-soft py-20">
         <div className={containerClass}>
           <h2 className="mb-10 text-2xl font-bold text-navy md:text-3xl">Other causes</h2>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {related.map((c) =>
             <CauseCard key={c.slug} cause={c} />
             )}

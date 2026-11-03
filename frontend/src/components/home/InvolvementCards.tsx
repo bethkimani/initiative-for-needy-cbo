@@ -14,7 +14,7 @@ export function InvolvementCards() {
           title="Work With Us"
           intro="Volunteer, partner with us, support our programmes or help connect us with development resources." />
         
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {involvementOptions.map((opt, i) => {
             const Icon = opt.icon;
             const primary = i === 0;
@@ -32,7 +32,7 @@ export function InvolvementCards() {
                     
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-6 text-xl font-bold">{opt.title}</h3>
+                  <h3 className="mt-6 break-words text-xl font-bold">{opt.title}</h3>
                   <p className={`mt-2 text-sm leading-relaxed ${primary ? 'text-white/85' : 'text-navy/70'}`}>{opt.text}</p>
                   <div className="mt-auto pt-6">
                     <ButtonLink to={opt.to} variant={primary ? 'light' : 'blue'} className="w-full">

@@ -17,88 +17,71 @@ export const site = {
 export const images = {
   logo: {
     src: "/995f53cd-348f-4199-84ed-6a59f6fffa93.jpg",
-    alt: 'Initiative for the Needy Charity Organization',
-    real: true
+    alt: 'Initiative for the Needy Charity Organization'
   },
   ceo: {
     src: "/charles.jpeg",
-    alt: 'Charles Kyalo Ngina, CEO of Initiative for the Needy',
-    real: true
+    alt: 'Charles Kyalo Ngina, CEO of Initiative for the Needy'
   },
   kidsCentre: {
     src: "/image-1.png",
-    alt: 'Children and caregivers gathered outside the Nest of Love Children’s Centre',
-    real: true
+    alt: 'Children and caregivers gathered outside the Nest of Love Children’s Centre'
   },
   foodDonation: {
     src: "/image-2.png",
-    alt: 'Volunteers in reflective vests standing beside bags of donated food and supplies',
-    real: true
+    alt: 'Volunteers in reflective vests standing beside bags of donated food and supplies'
   },
   volunteersOffice: {
     src: "/image-3.png",
-    alt: 'Volunteers outside the Initiative for the Needy office',
-    real: true
+    alt: 'Volunteers outside the Initiative for the Needy office'
   },
   feeding: {
     src: "/image-4.png",
-    alt: 'Volunteers serving meals to young children seated at an outdoor table',
-    real: true
+    alt: 'Volunteers serving meals to young children seated at an outdoor table'
   },
   ceoFeeding: {
     src: "/image-5.png",
-    alt: 'Children enjoying a meal during a community outreach',
-    real: true
+    alt: 'Children enjoying a meal during a community outreach'
   },
   teamOffice: {
     src: "/image-6.png",
-    alt: 'Initiative for the Needy team outside the Kiganjo office',
-    real: true
+    alt: 'Initiative for the Needy team outside the Kiganjo office'
   },
   heroEducation: {
     src: "/ba816f7c-9ed5-4366-965a-70857b451331.jpg",
-    alt: 'Schoolchildren in blue uniforms reading together in a bright classroom',
-    real: false
+    alt: 'Schoolchildren in blue uniforms reading together in a bright classroom'
   },
   heroCommunity: {
     src: "/d8af66c8-acdc-43be-908d-078a6c35c67a.jpg",
-    alt: 'Volunteers handing food packages to families during a community outreach',
-    real: false
+    alt: 'Volunteers handing food packages to families during a community outreach'
   },
   heroVolunteers: {
     src: "/43a8fcd0-82d9-44e9-956e-0df01a60dee3.jpg",
-    alt: 'Young volunteers working together in a community garden',
-    real: false
+    alt: 'Young volunteers working together in a community garden'
   },
   ctaBg: {
     src: "/ce459207-f77a-413c-ae3c-f982d9b800a0.jpg",
-    alt: 'A grandmother walking hand in hand with a child at sunset',
-    real: false
+    alt: 'A grandmother walking hand in hand with a child at sunset'
   },
   causeHealth: {
     src: "/a5546829-4a60-4896-812d-75db603f4674.jpg",
-    alt: 'A community health volunteer checking an elderly woman’s blood pressure',
-    real: false
+    alt: 'A community health volunteer checking an elderly woman’s blood pressure'
   },
   causeYouth: {
     src: "/5f64c818-7b1b-4ddf-b30f-875fe621a6f9.jpg",
-    alt: 'Young people learning tailoring skills on sewing machines',
-    real: false
+    alt: 'Young people learning tailoring skills on sewing machines'
   },
   causeElderly: {
     src: "/53705465-dfaf-431f-ada3-28d56c03a271.jpg",
-    alt: 'A young volunteer talking with an elderly man holding a walking cane',
-    real: false
+    alt: 'A young volunteer talking with an elderly man holding a walking cane'
   },
   causeDevelopment: {
     src: "/f4756bd3-d8a7-4f86-9868-207d5561f1cb.jpg",
-    alt: 'Community members collecting water from a new water tank',
-    real: false
+    alt: 'Community members collecting water from a new water tank'
   },
   blogEvent: {
     src: "/016d4cbb-b28d-4016-ac28-ef75a6fb9399.jpg",
-    alt: 'Families seated under a canopy during a community event',
-    real: false
+    alt: 'Families seated under a canopy during a community event'
   }
 };
 

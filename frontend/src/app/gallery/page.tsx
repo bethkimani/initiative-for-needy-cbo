@@ -33,7 +33,7 @@ export default function Gallery() {
                 type="button"
                 aria-pressed={category === c}
                 onClick={() => setCategory(c)}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
+                className={`min-h-11 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
                 category === c ? 'bg-navy text-white' : 'bg-soft text-navy/70 hover:text-navy'}`
                 }>
                 

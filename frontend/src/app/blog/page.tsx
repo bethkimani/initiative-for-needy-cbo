@@ -39,7 +39,7 @@ export default function Blog() {
         <div className={containerClass}>
           <article className="group relative grid overflow-hidden rounded-3xl bg-soft lg:grid-cols-2">
             <img src={featured.photo.src} alt={featured.photo.alt} className="aspect-[16/10] h-full w-full object-cover lg:aspect-auto" />
-            <div className="flex flex-col justify-center p-8 md:p-12">
+            <div className="flex flex-col justify-center p-6 sm:p-8 md:p-12">
               <p className="text-xs font-semibold text-charity">Featured · {featured.category}</p>
               <h2 className="mt-3 text-3xl font-bold leading-tight text-navy">
                 <Link href={`/blog/${featured.slug}`} className="after:absolute after:inset-0">
@@ -64,7 +64,7 @@ export default function Blog() {
                   setCategory(c);
                   setVisible(PAGE_SIZE);
                 }}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
+                className={`min-h-11 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
                 category === c ? 'bg-navy text-white' : 'bg-soft text-navy/70 hover:text-navy'}`
                 }>
                 
@@ -93,7 +93,7 @@ export default function Blog() {
               No articles found. Try another category or search term.
             </p> :
 
-          <div className="mt-10 grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-x-8 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
               {filtered.slice(0, visible).map((a) =>
             <ArticleCard key={a.slug} article={a} />
             )}

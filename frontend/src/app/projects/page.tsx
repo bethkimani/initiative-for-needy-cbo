@@ -72,7 +72,7 @@ export default function Projects() {
                 type="button"
                 aria-pressed={category === c}
                 onClick={() => setCategory(c)}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
+                className={`min-h-11 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
                 category === c ? 'bg-navy text-white' : 'bg-white text-navy/70 hover:text-navy'}`
                 }>
                 
@@ -103,7 +103,7 @@ export default function Projects() {
               </button>
             </div> :
 
-          <motion.div layout className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <motion.div layout className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
               <AnimatePresence mode="popLayout">
                 {results.map((p) =>
               <motion.div
