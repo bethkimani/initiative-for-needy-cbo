@@ -46,10 +46,14 @@ export function FormStatus({ status, onReset, notConnectedMessage }: FormStatusP
                   {notConnectedMessage ??
                 'Online submissions will be switched on once our secure form service is connected.'}{' '}
                   In the meantime, please call us on{' '}
-                  <a href={`tel:${site.phone}`} className="font-semibold text-brand underline-offset-2 hover:underline">
-                    {site.phone}
-                  </a>
-                  .
+                  {site.phones.map((phone, index) => (
+                    <React.Fragment key={phone}>
+                      {index > 0 && ' or '}
+                      <a href={`tel:${phone}`} className="font-semibold text-brand underline-offset-2 hover:underline">
+                        {phone}
+                      </a>
+                    </React.Fragment>
+                  ))}.
                 </p>
                 <button
                 type="button"

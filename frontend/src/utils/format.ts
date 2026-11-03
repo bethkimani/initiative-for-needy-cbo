@@ -9,6 +9,15 @@ export function formatKES(amount: number): string {
 }
 
 export function formatDate(iso: string): string {
+  const monthOnly = /^(\d{4})-(\d{2})$/.exec(iso);
+  if (monthOnly) {
+    const [, year, month] = monthOnly;
+    return new Date(Number(year), Number(month) - 1, 1).toLocaleDateString('en-GB', {
+      month: 'long',
+      year: 'numeric'
+    });
+  }
+
   return new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',

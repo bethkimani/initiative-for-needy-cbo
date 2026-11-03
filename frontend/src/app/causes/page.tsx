@@ -6,7 +6,6 @@ import { fundUses } from '@/data/values';
 import { containerClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
 import { Reveal } from '@/components/ui/Reveal';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { CauseCard } from '@/components/cards/CauseCard';
@@ -22,8 +21,8 @@ export default function Causes() {
     <>
       <PageHero
         crumb="Our Causes"
-        title="Causes That Deserve Our Attention."
-        intro="Choose where your support goes. Every cause below is rooted in the everyday needs of vulnerable people around Thika."
+        title="Supporting Vulnerable Communities"
+        intro="Our programmes respond to the needs of vulnerable people and families across Kiambu County."
         photo={images.feeding}>
         
         <ButtonLink to="/donate" variant="red" size="lg">
@@ -33,10 +32,6 @@ export default function Causes() {
 
       <section className="py-20 md:py-28">
         <div className={containerClass}>
-          <DraftNote className="mb-10">
-            Proposed cause categories. The organization can select, rename, add or remove causes. Goals and progress
-            appear only once verified.
-          </DraftNote>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {causes.map((c, i) =>
             <Reveal key={c.slug} delay={i % 3 * 0.05}>
@@ -49,7 +44,7 @@ export default function Causes() {
 
       <section className="bg-soft py-20 md:py-28">
         <div className={containerClass}>
-          <SectionHeading title="How your support is used" intro="A detailed allocation policy will be published by the organization." />
+          <SectionHeading title="Our Areas of Support" intro="We support community programmes in response to local needs." />
           <div className="grid gap-10 md:grid-cols-3">
             {fundUses.map((f) => {
               const Icon = f.icon;

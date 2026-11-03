@@ -24,7 +24,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
       </div>
       <div className="flex flex-1 flex-col pt-5">
         <p className="text-xs text-navy/55">
-          <time dateTime={article.date}>{formatDate(article.date)}</time> · Draft sample
+          <time dateTime={article.date}>{formatDate(article.date)}</time>
         </p>
         <h3 className="mt-2 text-lg font-bold leading-snug text-navy transition-colors duration-150 group-hover:text-brand">
           <Link href={`/blog/${article.slug}`} className="after:absolute after:inset-0">

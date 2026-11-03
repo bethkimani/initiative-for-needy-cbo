@@ -5,7 +5,6 @@ import { CalendarDaysIcon, FolderIcon, MapPinIcon, UsersIcon } from 'lucide-reac
 import { projects } from '@/data/projects';
 import { containerClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 type ProjectPageProps = { params: Promise<{ id: string }> };
@@ -28,7 +27,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
   { label: 'Location', value: project.location, icon: MapPinIcon },
   { label: 'Period', value: project.period, icon: CalendarDaysIcon },
   { label: 'Category', value: project.category, icon: FolderIcon },
-  { label: 'Beneficiaries', value: project.beneficiaries ?? 'To be verified', icon: UsersIcon }];
+  { label: 'Beneficiaries', value: project.beneficiaries ?? 'Not specified', icon: UsersIcon }];
 
   const related = projects.filter((p) => p.slug !== project.slug && p.category === project.category).slice(0, 3);
 
@@ -47,7 +46,6 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
               <p key={p}>{p}</p>
               )}
             </div>
-            <DraftNote className="mt-6">Timelines and verified results will be added by the organization.</DraftNote>
           </div>
           <aside className="h-fit rounded-3xl bg-soft p-8 lg:sticky lg:top-28">
             <dl className="space-y-5">

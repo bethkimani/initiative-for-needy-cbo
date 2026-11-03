@@ -13,13 +13,9 @@ export function ImpactStats({ id }: ImpactStatsProps) {
     <section id={id} className="scroll-mt-24 bg-brand py-20 text-white md:py-24">
       <div className={`${containerClass} grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:items-center`}>
         <Reveal>
-          <h2 className="text-3xl font-bold leading-tight md:text-4xl">Small acts, multiplied by many hands.</h2>
+          <h2 className="text-3xl font-bold leading-tight md:text-4xl">Community support that builds dignity and opportunity.</h2>
           <p className="mt-4 max-w-md leading-relaxed text-white/80">
-            Every volunteer hour and every shilling given adds up. Here is where we are on the journey.
-          </p>
-          <p className="mt-6 max-w-md text-xs leading-relaxed text-white/60">
-            Provisional figures supplied for design. Meanings, measurement periods and accuracy will be confirmed by the
-            organization before publication.
+            Our work includes vocational training, support for older people, children’s home outreach and programmes for vulnerable groups.
           </p>
         </Reveal>
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-white/15">

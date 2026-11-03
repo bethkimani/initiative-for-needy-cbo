@@ -12,45 +12,54 @@ import {
   UsersIcon,
   WalletIcon } from
 'lucide-react';
+import { site } from '@/data/site';
 
 export const purposeTabs = [
 {
   id: 'mission',
   label: 'Mission',
   title: 'Our Mission',
-  body: 'To improve the quality of life of local vulnerable communities through substantial local development initiatives.',
+  body: site.mission,
   draft: false
 },
 {
   id: 'vision',
   label: 'Vision',
   title: 'Our Vision',
-  body: 'To fully empower the community in order to improve the livelihood of the families and residents of our villages.',
-  draft: true
+  body: site.vision,
+  draft: false
 },
 {
   id: 'values',
   label: 'Core Values',
   title: 'Our Core Values',
-  body: 'Compassion · Integrity · Accountability · Inclusion · Community ownership',
-  draft: true
+  body: 'Integrity · Honesty · Caring · Accountability · Compassion · Equity · Respect for human dignity',
+  draft: false
 }];
 
+export const organizationObjectives = [
+  'Promote and protect the rights and welfare of vulnerable populations.',
+  'Provide food, shelter, clothing and health-care support to people in need.',
+  'Empower vulnerable groups through skills training, education and income-generating activities.',
+  'Conduct advocacy and awareness campaigns on issues affecting vulnerable people.',
+  'Collaborate with government agencies, NGOs and other stakeholders to deliver services effectively.',
+  'Mobilize resources for the benefit of target communities.',
+  'Respond to emergencies and disasters affecting vulnerable groups.'
+];
 
 export const impactStats = [
-{ value: 40, label: 'Counties', detail: 'Reach across Kenya', icon: MapPinIcon },
-{ value: 400, label: 'Volunteers', detail: 'People giving their time', icon: UsersIcon },
-{ value: 10000, label: 'Our Goal', detail: 'Our target to reach', icon: TargetIcon },
-{ value: 5000, label: 'Raised', detail: 'Raised so far', icon: CoinsIcon }];
-
+{ value: 77, label: 'Young people trained', detail: 'Completed short vocational courses', icon: UsersIcon },
+{ value: 100, label: 'Older people reached', detail: 'Mobilized for the 2024 Older Persons Day', icon: HandHeartIcon },
+{ value: 6, label: 'Priority groups', detail: 'Children, people with disabilities, people living with HIV/AIDS, widows, youth and older people', icon: TargetIcon },
+{ value: 3, label: 'Pilot communities', detail: 'Thika, Juja and Ruiru', icon: MapPinIcon }];
 
 export const approachItems = [
-{ title: 'Community participation', text: 'Communities help identify needs and shape the solutions that affect them.', icon: UsersIcon },
-{ title: 'Dignity and inclusion', text: 'Every person we serve is treated with respect, whatever their circumstances.', icon: HeartHandshakeIcon },
-{ title: 'Responsible resource use', text: 'Every shilling and donated item is directed carefully to where it is needed.', icon: WalletIcon },
-{ title: 'Sustainable development', text: 'We favour initiatives that keep making a difference long after we leave.', icon: SproutIcon },
-{ title: 'Collaboration', text: 'We work hand in hand with volunteers, partners and local leaders.', icon: HandshakeIcon },
-{ title: 'Accountability and transparency', text: 'We report openly on what we do and how resources are used.', icon: ShieldCheckIcon }];
+{ title: 'Integrity', text: 'We act with integrity in serving vulnerable people and working with our partners.', icon: ShieldCheckIcon },
+{ title: 'Honesty', text: 'We value honest communication and relationships built on trust.', icon: HandshakeIcon },
+{ title: 'Caring', text: 'We respond to community needs with practical care and support.', icon: HeartHandshakeIcon },
+{ title: 'Accountability', text: 'We are responsible to the communities we serve and the people who support our work.', icon: WalletIcon },
+{ title: 'Compassion', text: 'We meet people facing hardship with empathy and understanding.', icon: HandHeartIcon },
+{ title: 'Equity and dignity', text: 'We promote equal opportunity and respect for every person’s human dignity.', icon: UsersIcon }];
 
 
 export const involvementOptions = [
@@ -61,6 +70,6 @@ export const involvementOptions = [
 
 
 export const fundUses = [
-{ title: 'Direct programme support', text: 'Food, supplies and practical help delivered to families and individuals.', icon: HandCoinsIcon },
-{ title: 'Community outreach', text: 'Transport and logistics that get help to people where they live.', icon: MapPinIcon },
-{ title: 'Accountability', text: 'Record keeping and reporting so supporters can see how gifts are used.', icon: ShieldCheckIcon }];
+{ title: 'Community support', text: 'Food, clothing, shelter and other practical assistance for people in need.', icon: HandCoinsIcon },
+{ title: 'Education and empowerment', text: 'Skills training, education, counselling and livelihood support for vulnerable groups.', icon: SproutIcon },
+{ title: 'Health and social support', text: 'Counselling, psychosocial support, health awareness and community outreach.', icon: ShieldCheckIcon }];

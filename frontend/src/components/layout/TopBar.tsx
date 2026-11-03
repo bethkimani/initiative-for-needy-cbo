@@ -11,7 +11,7 @@ export function TopBar() {
         <ul className="flex items-center gap-6">
           <li className="flex items-center gap-1.5">
             <MapPinIcon className="h-3.5 w-3.5 text-gold" aria-hidden="true" />
-            {site.location}
+            {site.shortLocation}
           </li>
           <li>
             <a href={`tel:${site.phone}`} className="flex items-center gap-1.5 transition-colors duration-150 hover:text-white">
@@ -21,7 +21,9 @@ export function TopBar() {
           </li>
           <li className="hidden items-center gap-1.5 lg:flex">
             <MailIcon className="h-3.5 w-3.5 text-gold" aria-hidden="true" />
-            {site.email ?? 'Official email coming soon'}
+            <a href={`mailto:${site.email}`} className="transition-colors duration-150 hover:text-white">
+              {site.email}
+            </a>
           </li>
         </ul>
         <Link

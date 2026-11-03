@@ -13,87 +13,90 @@ export const causes = [
 {
   slug: 'food-and-essential-supplies',
   title: 'Food & Essential Supplies',
-  summary: 'Getting food, household basics and essentials to families facing hardship around Thika.',
+  summary: 'Providing practical help to vulnerable families, children, street-connected children and older people.',
   description: [
-  'Food insecurity is one of the most immediate challenges faced by vulnerable households. Through community collections and donor support, we gather food and essential supplies and deliver them directly to families who need them.',
-  'Contributions to this cause help us source staple foods, cooking essentials and hygiene items, and cover the logistics of getting them safely to households.'],
+  'The organization provides food and other essential support to vulnerable people in the community, including children, street-connected children, older people and families facing hardship.',
+  'Past outreach has included food support in Kiandutu and visits to children’s homes.'],
 
   photo: images.foodDonation,
-  goal: 'Funding goal to be confirmed',
+  goal: 'Support for vulnerable people and families',
   progress: null,
   icon: UtensilsCrossedIcon
 },
 {
   slug: 'vulnerable-families',
   title: 'Support for Vulnerable Families',
-  summary: 'Standing alongside children, caregivers and households going through difficult seasons.',
+  summary: 'Supporting orphans, vulnerable children, widows, single young parents aged 27 and below, and families facing hardship.',
   description: [
-  'Some families carry more than their share — illness, loss of income or caring for many children. We walk alongside them with practical help, encouragement and connections to further support.',
-  'This cause supports family visits, children’s centre outreach and urgent household needs identified by our volunteers.'],
+  'The organization works to ensure vulnerable people are not left behind, including widows and single young parents aged 27 and below. Support has included food, clothing, help with rent, counselling and assistance to start small businesses.',
+  'The Little Lights programme provides home-based care, nutritious meals, mentorship, education and life-skills activities, and play for orphans and other vulnerable children.'],
 
   photo: images.kidsCentre,
-  goal: 'Funding goal to be confirmed',
+  goal: 'Support for children and families',
   progress: null,
   icon: HouseIcon
 },
 {
   slug: 'education-and-school-support',
   title: 'Education & School Support',
-  summary: 'Helping children stay in school with learning materials, uniforms and encouragement.',
+  summary: 'Expanding access to education, mentorship and life skills for children and young people.',
   description: [
-  'Education opens doors. Many children from vulnerable homes miss school because of small but real barriers such as uniforms, books or fees.',
-  'This proposed cause would help remove those barriers so children can learn with dignity and confidence.'],
+  'The organization supports education through the Little Lights programme and education sponsorship for vulnerable young people.',
+  'In partnership with the Kenya Institute of Software Engineering, 77 young people from vulnerable families completed short vocational courses in February 2025.'],
 
   photo: images.heroEducation,
-  goal: 'Funding goal to be confirmed',
+  goal: 'Education and skills support',
   progress: null,
   icon: GraduationCapIcon
 },
 {
   slug: 'community-health',
   title: 'Community Health & Wellbeing',
-  summary: 'Promoting health awareness and access to basic care for families and the elderly.',
+  summary: 'Offering free counselling, psychosocial support and HIV/AIDS awareness in the community.',
   description: [
-  'Good health underpins everything else. This proposed cause focuses on health awareness, screening days and linking community members to local health services.'],
+  'Regular activities include free counselling and psychosocial support, guidance and counselling for vocational students, and HIV/AIDS awareness and advocacy.',
+  'The organization reports that its guidance and counselling programme at Makongeni Vocational Training Centre has helped some students move away from drug abuse.'],
 
   photo: images.causeHealth,
-  goal: 'Funding goal to be confirmed',
+  goal: 'Counselling and community health awareness',
   progress: null,
   icon: StethoscopeIcon
 },
 {
   slug: 'youth-empowerment',
   title: 'Youth Empowerment & Skills',
-  summary: 'Equipping young people with practical skills, mentorship and a path to earning.',
+  summary: 'Supporting youth with vocational skills, mentorship, counselling and economic empowerment.',
   description: [
-  'Young people are the future of every community. This proposed cause supports skills training, mentorship and opportunities that help youth build livelihoods.'],
+  'The organization holds youth workshops and mentorship activities and supports young people through training and counselling.',
+  'In 2025, 77 young people from vulnerable families completed short courses including plumbing, cake baking, pastry, hairdressing and beauty therapy through a partnership with KISSE College.'],
 
   photo: images.causeYouth,
-  goal: 'Funding goal to be confirmed',
+  goal: 'Youth training and empowerment',
   progress: null,
   icon: BriefcaseIcon
 },
 {
   slug: 'elderly-and-disability-support',
   title: 'Elderly & Disability Support',
-  summary: 'Companionship, care and practical help for older people and people living with disability.',
+  summary: 'Providing food, visits and practical social support to older people and persons with disabilities.',
   description: [
-  'Older people and people living with disability are often the first to be left behind. This proposed cause supports home visits, mobility aids and essential care.'],
+  'The organization has visited and supported older people and persons with disabilities in Kiandutu Slums, including food support.',
+  'It also brought together 100 older people from Kiganjo, Athena and Kiang’ombe to mark the International Day of Older Persons on 1 October 2024.'],
 
   photo: images.causeElderly,
-  goal: 'Funding goal to be confirmed',
+  goal: 'Support for older people and persons with disabilities',
   progress: null,
   icon: AccessibilityIcon
 },
 {
   slug: 'community-development',
   title: 'Community Development',
-  summary: 'Community-led initiatives that strengthen local livelihoods and shared resources.',
+  summary: 'Community-driven development, peace-building and environmental awareness.',
   description: [
-  'Lasting change is built by communities themselves. This proposed cause supports locally identified development initiatives, from shared resources to small livelihood projects.'],
+  'The organization promotes community participation, peaceful coexistence among diverse communities and environmental protection through outreach and open-air community meetings.'],
 
   photo: images.causeDevelopment,
-  goal: 'Funding goal to be confirmed',
+  goal: 'Community-led development',
   progress: null,
   icon: SproutIcon
 }];

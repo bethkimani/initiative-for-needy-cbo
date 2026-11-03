@@ -3,13 +3,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
 import { images, site } from '@/data/site';
-import { purposeTabs } from '@/data/values';
+import { organizationObjectives, purposeTabs } from '@/data/values';
 import { team } from '@/data/team';
-import { causes } from '@/data/causes';
 import { containerClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
 import { Reveal } from '@/components/ui/Reveal';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { TeamCard } from '@/components/cards/TeamCard';
@@ -21,7 +19,7 @@ const galleryStrip = [images.feeding, images.kidsCentre, images.foodDonation, im
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about Initiative for the Needy Charity Organization — our mission, vision, values and leadership.',
+  description: 'Learn about Initiative for the Needy Charity Organization, its mission, vision, objectives and community programmes.',
 };
 
 export default function About() {
@@ -29,8 +27,8 @@ export default function About() {
     <>
       <PageHero
         crumb="About Us"
-        title="A community charity rooted in Thika."
-        intro="We exist to improve the quality of life of local vulnerable communities — with dignity, practicality and the help of many hands."
+        title="Empowering vulnerable people across Kiambu County."
+        intro={site.vision}
         photo={images.teamOffice} />
       
 
@@ -39,14 +37,11 @@ export default function About() {
           <Reveal>
             <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">Who we are</h2>
             <p className="mt-5 text-lg leading-relaxed text-navy/75">
-              {site.name} is a community-focused charitable organization operating from Kamande Stage in Thika Town,
-              Kenya. Our team and volunteers work alongside vulnerable people and families to provide practical
-              support and create lasting opportunity.
+              {site.name} is a community-based, non-profit organization initiated in January 2020 and registered on 16
+              September 2022 under the Ministry of Labour and Social Protection, State Department. We support
+              vulnerable groups across Kiambu County, with planned pilot projects in Thika, Juja and Ruiru.
             </p>
-            <DraftNote className="mt-6">
-              Founding story, registration details and organizational history will be added once confirmed by the
-              organization.
-            </DraftNote>
+            <p className="mt-4 text-lg leading-relaxed text-navy/75">{site.goal}</p>
           </Reveal>
           <Reveal delay={0.05}>
             <dl className="divide-y divide-line rounded-3xl bg-soft px-8">
@@ -54,7 +49,6 @@ export default function About() {
               <div key={t.id} className="py-7">
                   <dt className="text-sm font-semibold text-charity">{t.title}</dt>
                   <dd className="mt-2 font-display text-xl font-semibold leading-relaxed text-navy">{t.body}</dd>
-                  {t.draft && <dd className="mt-2 text-xs text-navy/55">Draft — awaiting confirmation</dd>}
                 </div>
               )}
             </dl>
@@ -65,17 +59,16 @@ export default function About() {
       <section className="pb-20 md:pb-28">
         <div className={containerClass}>
           <SectionHeading
-            title="Our objectives"
-            intro="Proposed objectives drawn from our focus areas — to be finalised by the organization." />
+            title="Our Objectives"
+            intro="We work with communities and partners to protect rights, meet essential needs and create opportunities for vulnerable people." />
           
           <ol className="grid gap-x-10 gap-y-6 md:grid-cols-2">
-            {causes.slice(0, 6).map((c, i) =>
-            <li key={c.slug}>
+            {organizationObjectives.map((objective, i) =>
+            <li key={objective}>
                 <Reveal delay={i % 2 * 0.04} className="flex gap-5 border-t border-line pt-5">
                   <span className="font-display text-2xl font-extrabold text-brand/30">{i + 1}</span>
                   <div>
-                    <h3 className="font-bold text-navy">{c.title}</h3>
-                    <p className="mt-1 text-sm text-navy/70">{c.summary}</p>
+                    <p className="font-bold text-navy">{objective}</p>
                   </div>
                 </Reveal>
               </li>
@@ -90,10 +83,10 @@ export default function About() {
       <section className="py-20 md:py-28">
         <div className={containerClass}>
           <SectionHeading
-            title="Our leadership"
+            title="Our Team"
             action={
             <ButtonLink to="/team" variant="outline" size="lg">
-                Full Team Profiles
+                Meet Our Team
               </ButtonLink>
             } />
           
@@ -108,8 +101,8 @@ export default function About() {
       <section className="bg-soft py-20 md:py-28">
         <div className={containerClass}>
           <SectionHeading
-            title="From our work"
-            intro="Genuine photos shared by our team."
+            title="From Our Work"
+            intro="Community outreach, children’s programmes and practical support across Kiambu County."
             action={
             <Link href="/gallery" className="inline-flex items-center gap-1.5 font-semibold text-brand hover:underline">
                 Open the gallery <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />

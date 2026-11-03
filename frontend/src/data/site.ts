@@ -1,27 +1,33 @@
 export const site = {
   name: 'Initiative for the Needy Charity Organization',
   shortName: 'Initiative for the Needy',
-  location: 'Kamande Stage, Thika Town, Kenya',
-  phone: '+25421286516',
-  email: null as string | null,
-  mission:
-  'To improve the quality of life of local vulnerable communities through substantial local development initiatives.'
+  shortLocation: 'Kiganjo, Thika, Kenya',
+  location: 'Kiganjo-Main Road, Corner 3, Kwa Kamande Stage, next to Gamoyoni Driving School, Thika, Kenya',
+  postalAddress: 'P.O. Box 199, Thika, Kenya',
+  phone: '+254721286516',
+  phones: ['+254721286516', '+254721452773'],
+  email: 'initiativeneedycbo@gmail.com',
+  established: 'Initiated in January 2020; registered on 16 September 2022',
+  areaOfOperation: 'Kiambu County, Central Kenya, with a focus on Thika, Juja and Ruiru',
+  mission: 'To empower vulnerable individuals and groups through advocacy, education, health, economic empowerment, and social support initiatives.',
+  vision: 'A community where all vulnerable persons live with dignity, equality, and access to opportunities.',
+  goal: 'To support children, youth, widows and orphans through capacity building that builds knowledge, skills, networks and motivation for improved living standards, human dignity and self-esteem.'
 };
 
 export const images = {
   logo: {
     src: "/995f53cd-348f-4199-84ed-6a59f6fffa93.jpg",
-    alt: 'Initiative for the Needy Charity Organization logo',
+    alt: 'Initiative for the Needy Charity Organization',
     real: true
   },
   ceo: {
-    src: "/image.png",
-    alt: 'Charles Thika, Founder and CEO',
+    src: "/charles.jpeg",
+    alt: 'Charles Kyalo Ngina, CEO of Initiative for the Needy',
     real: true
   },
   kidsCentre: {
     src: "/image-1.png",
-    alt: 'Children and caregivers gathered outside the Nest of Love Children’s Centre with our CEO',
+    alt: 'Children and caregivers gathered outside the Nest of Love Children’s Centre',
     real: true
   },
   foodDonation: {
@@ -31,7 +37,7 @@ export const images = {
   },
   volunteersOffice: {
     src: "/image-3.png",
-    alt: 'Five volunteers in reflective vests outside the Charity Organisation Office',
+    alt: 'Volunteers outside the Initiative for the Needy office',
     real: true
   },
   feeding: {
@@ -41,12 +47,12 @@ export const images = {
   },
   ceoFeeding: {
     src: "/image-5.png",
-    alt: 'Our CEO checking on children as they eat during a community meal',
+    alt: 'Children enjoying a meal during a community outreach',
     real: true
   },
   teamOffice: {
     src: "/image-6.png",
-    alt: 'Team members in reflective vests outside the Kamande charity office',
+    alt: 'Initiative for the Needy team outside the Kiganjo office',
     real: true
   },
   heroEducation: {

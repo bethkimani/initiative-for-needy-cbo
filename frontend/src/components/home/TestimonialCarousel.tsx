@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon, QuoteIcon, UserRoundIcon } from 'lucide-react';
 import { testimonials } from '@/data/testimonials';
 import { containerClass } from '@/utils/styles';
-import { DraftNote } from '@/components/ui/DraftNote';
 
 export function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
@@ -25,17 +24,16 @@ export function TestimonialCarousel() {
     <section
       className="bg-soft py-20 md:py-28"
       aria-roledescription="carousel"
-      aria-label="Testimonials"
+      aria-label="Community impact"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}>
       
       <div className={`${containerClass} grid gap-12 lg:grid-cols-[1fr_2fr] lg:items-center`}>
         <div>
-          <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">Voices from the community</h2>
+          <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">Our Community Impact</h2>
           <p className="mt-4 leading-relaxed text-navy/70">
-            We will only share real words from real people — with their permission.
+            A snapshot of our programmes and documented achievements.
           </p>
-          <DraftNote className="mt-5">Placeholders until verified testimonials and publication consent are provided.</DraftNote>
           <div className="mt-8 flex gap-3">
             <button
               type="button"

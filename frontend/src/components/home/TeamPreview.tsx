@@ -11,8 +11,8 @@ export function TeamPreview() {
     <section className="py-20 md:py-28">
       <div className={containerClass}>
         <SectionHeading
-          title="Meet Our Team"
-          intro="The people leading our work in Thika and beyond."
+          title="Our Team"
+          intro="Meet the people who lead and deliver our work with vulnerable communities in Thika and Kiambu County."
           action={
           <ButtonLink to="/team" variant="outline" size="lg">
               Meet Our Team

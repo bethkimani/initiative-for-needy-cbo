@@ -7,7 +7,6 @@ import { projects } from '@/data/projects';
 import { images } from '@/data/site';
 import { containerClass, inputClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
-import { DraftNote } from '@/components/ui/DraftNote';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { FinalCTA } from '@/components/home/FinalCTA';
 
@@ -34,7 +33,7 @@ export default function Projects() {
       <PageHero
         crumb="Projects"
         title="Our Projects"
-        intro="What we have done, what we are doing and what we are preparing next — in Thika and the communities around it."
+        intro="Explore our completed programmes, ongoing activities and future plans for vulnerable communities across Kiambu County."
         photo={images.foodDonation} />
       
       <section className="py-16 md:py-24">
@@ -86,7 +85,7 @@ export default function Projects() {
             <p className="text-sm text-navy/60" aria-live="polite">
               Showing {results.length} of {projects.length} projects
             </p>
-            <DraftNote>Project details and results are placeholders until confirmed by the organization.</DraftNote>
+            <p className="text-sm text-navy/60">Completed work and future plans are identified in each project description.</p>
           </div>
           {results.length === 0 ?
           <div className="rounded-3xl border border-dashed border-line py-20 text-center">

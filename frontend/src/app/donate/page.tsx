@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const steps = [
-{ title: 'Choose your gift', text: 'Pick an amount in KES and, if you like, a cause.' },
-{ title: 'Share your details', text: 'So we can thank you and send a receipt.' },
-{ title: 'Pay securely', text: 'Through a trusted provider — M-Pesa or card, once connected.' },
-{ title: 'Receive your receipt', text: 'A confirmation and receipt arrive by email.' }];
+{ title: 'Contact us', text: 'Call either of our phone numbers or email us to discuss supporting our work.' },
+{ title: 'Choose an area to support', text: 'Tell us if you would like to support a particular programme or the organization’s wider work.' },
+{ title: 'Arrange your contribution', text: 'Online donation processing is not connected yet, so please arrange contributions directly with the organization.' },
+{ title: 'Discuss confirmation', text: 'Please ask us directly about confirmation or receipts when arranging your contribution.' }];
 
 
 export default function Donate() {
@@ -24,7 +24,7 @@ export default function Donate() {
       <PageHero
         crumb="Donate"
         title="Your gift turns compassion into action."
-        intro="Support vulnerable families around Thika with a one-time or monthly donation."
+        intro="Contact Initiative for the Needy to discuss supporting vulnerable communities across Kiambu County."
         photo={images.ceoFeeding} />
       
       <section className="bg-soft py-16 md:py-24">
@@ -66,7 +66,7 @@ export default function Donate() {
 
               })}
             </ul>
-            <p className="mt-4 text-xs text-navy/55">A detailed allocation and financial reporting policy will be published by the organization.</p>
+            <p className="mt-4 text-xs text-navy/55">Contributions support community programmes in response to local needs. Contact the organization to discuss how support can be arranged.</p>
           </div>
         </div>
       </section>

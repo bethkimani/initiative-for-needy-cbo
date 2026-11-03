@@ -42,7 +42,7 @@ export default function Partnerships() {
       <PageHero
         crumb="Partnerships"
         title="Partner with us for lasting change."
-        intro="Businesses, institutions and community groups can multiply what is possible for vulnerable families in Thika."
+        intro="We work with community groups, churches, education providers and development partners to support vulnerable people in Kiambu County."
         photo={images.teamOffice} />
       
       <section className="py-20 md:py-28">
@@ -60,6 +60,17 @@ export default function Partnerships() {
                     <h3 className="text-xl font-bold text-navy">{o.title}</h3>
                     <p className="mt-2 leading-relaxed text-navy/70">{o.text}</p>
                   </div>
+                  <p className="mt-12 leading-relaxed text-navy/75">
+                    <strong className="text-navy">Current partners and supporters:</strong> Friends from Madaraka-Makongeni
+                    Market, Friends from Classic-Kiganjo Market, Friends from Kiganjo-Corner 3 Landmark Market, members of
+                    International Voice of God Church in Kiganjo, members of Everlasting Hope Church in Kiganjo, and Kenya
+                    Institute of Software Engineering (KISSE) College.
+                  </p>
+                  <p className="mt-4 leading-relaxed text-navy/75">
+                    The organization is seeking development partnerships, project funding, technical support, links with
+                    Kenyan and international organizations, and skilled volunteers. Future plans include a community resource
+                    centre, school, health centre and income-generating projects.
+                  </p>
                 </Reveal>);
 
             })}
@@ -72,7 +83,7 @@ export default function Partnerships() {
           <div>
             <h2 className="text-3xl font-bold text-navy">Start a conversation</h2>
             <p className="mt-3 leading-relaxed text-navy/70">
-              Share a few details and our leadership team will reach out to explore how we can work together.
+              Share what your organization can offer or what support you would like to explore. Online submissions are not connected yet; please contact us by phone or email directly.
             </p>
             <img src={images.foodDonation.src} alt={images.foodDonation.alt} loading="lazy" className="mt-8 hidden aspect-[4/5] w-full rounded-3xl object-cover lg:block" />
           </div>
