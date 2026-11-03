@@ -1,0 +1,47 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+/* Tailwind CSS v4 bundles the base styles, components, and utilities in one import. */
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --color-navy: #15243a;
+  --color-brand: #0756a5;
+  --color-brand-dark: #064680;
+  --color-brand-light: #e8f1fb;
+  --color-charity: #e34f5b;
+  --color-charity-dark: #bd3945;
+  --color-charity-light: #fff0f1;
+  --color-gold: #f2c65d;
+  --color-gold-light: #fff6dc;
+  --color-soft: #f5f7fa;
+  --color-line: #e1e6ed;
+  --shadow-soft: 0 8px 24px -14px rgb(21 36 58 / 15%);
+  --shadow-lift: 0 16px 40px -20px rgb(21 36 58 / 35%);
+}
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+body {
+  @apply bg-white font-sans text-navy antialiased;
+}
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display tracking-tight;
+}
+::selection {
+  background: #0756a5;
+  color: #fff;
+}
