@@ -21,7 +21,7 @@ const content: Record<PolicyKind, {title: string;sections: {heading: string;body
     title: 'Terms of Use',
     sections: [
     { heading: 'Using this website', body: 'Placeholder terms describing acceptable use of this website, to be reviewed and approved by the organization.' },
-    { heading: 'Content', body: 'Content on this site is provided for information about our work. Some content is illustrative until replaced with verified material.' },
+    { heading: 'Content', body: 'Content on this site is provided for information about our work. Some content may be updated as verified material becomes available.' },
     { heading: 'Donations', body: 'Donation terms will be published once a payment provider is connected.' }]
 
   },

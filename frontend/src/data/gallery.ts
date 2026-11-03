@@ -9,11 +9,11 @@ export const galleryItems: GalleryItem[] = [
 { photo: images.volunteersOffice, category: 'Our Team', caption: 'Volunteers outside the organization’s office' },
 { photo: images.ceoFeeding, category: 'Outreach', caption: 'Children enjoying a meal during community outreach' },
 { photo: images.ceo, category: 'Outreach', caption: 'Community outreach and support' },
-{ photo: images.heroCommunity, category: 'Illustrative', caption: 'Illustrative: community outreach' },
-{ photo: images.heroEducation, category: 'Illustrative', caption: 'Illustrative: education support' },
-{ photo: images.causeHealth, category: 'Illustrative', caption: 'Illustrative: community health' },
-{ photo: images.causeYouth, category: 'Illustrative', caption: 'Illustrative: youth skills' },
-{ photo: images.blogEvent, category: 'Illustrative', caption: 'Illustrative: community event' }];
+{ photo: images.heroCommunity, category: 'Outreach', caption: 'Community outreach' },
+{ photo: images.heroEducation, category: 'Education', caption: 'Education support' },
+{ photo: images.causeHealth, category: 'Community Support', caption: 'Community health' },
+{ photo: images.causeYouth, category: 'Education', caption: 'Youth skills training' },
+{ photo: images.blogEvent, category: 'Outreach', caption: 'Community event' }];
 
 
-export const galleryCategories = ['All', 'Outreach', 'Community Support', 'Our Team', 'Illustrative'];
+export const galleryCategories = ['All', 'Outreach', 'Community Support', 'Our Team', 'Education'];
