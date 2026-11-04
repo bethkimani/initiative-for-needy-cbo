@@ -17,7 +17,7 @@ export function Logo({ tone = 'dark' }: LogoProps) {
           Initiative for the Needy
         </span>
         <span className={`block text-[11px] font-medium sm:text-xs ${tone === 'light' ? 'text-white/65' : 'text-charity'}`}>
-          Charity Organization
+          Community Based Organization (CBO)
         </span>
       </span>
     </Link>);
