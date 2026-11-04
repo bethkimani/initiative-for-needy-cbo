@@ -42,7 +42,7 @@ export const organizationObjectives = [
   'Provide food, shelter, clothing and health-care support to people in need.',
   'Empower vulnerable groups through skills training, education and income-generating activities.',
   'Conduct advocacy and awareness campaigns on issues affecting vulnerable people.',
-  'Collaborate with government agencies, NGOs and other stakeholders to deliver services effectively.',
+  'Collaborate with government agencies, community-based organizations and other stakeholders to deliver services effectively.',
   'Mobilize resources for the benefit of target communities.',
   'Respond to emergencies and disasters affecting vulnerable groups.'
 ];

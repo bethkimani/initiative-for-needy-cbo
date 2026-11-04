@@ -3,7 +3,7 @@ import { PolicyContent } from '@/components/PolicyContent';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy',
-  description: 'Cookie information for Initiative for the Needy Charity Organization.',
+  description: 'Cookie information for Initiative for the Needy Community Based Organization (CBO).',
 };
 
 export default function CookiesPage() {

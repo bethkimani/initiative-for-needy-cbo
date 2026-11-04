@@ -193,7 +193,7 @@ export function DonationForm() {
         <FormStatus
           status={form.status}
           onReset={form.resetStatus}
-          notConnectedMessage="Online payments (M-Pesa and card) will open once the organization’s verified account is connected to a secure payment provider. No payment has been taken." />
+          notConnectedMessage="The website’s online checkout is not connected yet. You can still donate using the M-Pesa Pay Bill details above; no online payment has been taken." />
         
       </aside>
     </form>);

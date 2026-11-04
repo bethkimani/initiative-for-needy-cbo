@@ -13,7 +13,7 @@ import { NewsPreview } from '@/components/home/NewsPreview';
 import { FinalCTA } from '@/components/home/FinalCTA';
 
 export const metadata: Metadata = {
-  description: 'Initiative for the Needy Charity Organization — improving the quality of life of vulnerable communities in Thika, Kenya.',
+  description: 'Initiative for the Needy Community Based Organization (CBO) — improving the quality of life of vulnerable communities in Thika, Kenya.',
 };
 
 export default function Home() {

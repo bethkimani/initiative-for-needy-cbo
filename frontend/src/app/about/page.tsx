@@ -19,7 +19,7 @@ const galleryStrip = [images.feeding, images.kidsCentre, images.foodDonation, im
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about Initiative for the Needy Charity Organization, its mission, vision, objectives and community programmes.',
+  description: 'Learn about Initiative for the Needy Community Based Organization (CBO), its mission, vision, objectives and community programmes.',
 };
 
 export default function About() {
@@ -37,7 +37,7 @@ export default function About() {
           <Reveal>
             <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">Who we are</h2>
             <p className="mt-5 text-lg leading-relaxed text-navy/75">
-              {site.name} is a community-based, non-profit organization initiated in January 2020 and registered on 16
+              {site.shortName} is a Community Based Organization (CBO) that was initiated in January 2020 and registered on 16
               September 2022 under the Ministry of Labour and Social Protection, State Department. We support
               vulnerable groups across Kiambu County, with planned pilot projects in Thika, Juja and Ruiru.
             </p>

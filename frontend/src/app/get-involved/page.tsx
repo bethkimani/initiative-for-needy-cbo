@@ -31,7 +31,7 @@ const skills = ['Teaching & tutoring', 'Healthcare', 'Accounting & finance', 'Ph
 
 export const metadata: Metadata = {
   title: 'Get Involved',
-  description: 'Donate, volunteer, partner or fundraise with Initiative for the Needy Charity Organization.',
+  description: 'Donate, volunteer, partner or fundraise with Initiative for the Needy Community Based Organization (CBO).',
 };
 
 export default function GetInvolved() {

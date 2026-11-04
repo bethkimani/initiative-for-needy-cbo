@@ -3,7 +3,7 @@ import { PolicyContent } from '@/components/PolicyContent';
 
 export const metadata: Metadata = {
   title: 'Terms of Use',
-  description: 'Terms of use for the Initiative for the Needy Charity Organization website.',
+  description: 'Terms of use for the Initiative for the Needy Community Based Organization (CBO) website.',
 };
 
 export default function TermsPage() {

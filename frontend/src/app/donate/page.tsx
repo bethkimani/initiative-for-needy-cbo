@@ -8,13 +8,13 @@ import { DonationForm } from '@/components/donate/DonationForm';
 
 export const metadata: Metadata = {
   title: 'Donate',
-  description: 'Make a one-time or monthly donation in KES to Initiative for the Needy Charity Organization.',
+  description: 'Make a one-time or monthly donation in KES to Initiative for the Needy Community Based Organization (CBO).',
 };
 
 const steps = [
 { title: 'Contact us', text: 'Call either of our phone numbers or email us to discuss supporting our work.' },
 { title: 'Choose an area to support', text: 'Tell us if you would like to support a particular programme or the organization’s wider work.' },
-{ title: 'Arrange your contribution', text: 'Online donation processing is not connected yet, so please arrange contributions directly with the organization.' },
+{ title: 'Make your contribution', text: 'Use the Pay Bill details below to send your contribution.' },
 { title: 'Discuss confirmation', text: 'Please ask us directly about confirmation or receipts when arranging your contribution.' }];
 
 
@@ -29,6 +29,24 @@ export default function Donate() {
       
       <section className="bg-soft py-16 md:py-24">
         <div className={containerClass}>
+          <div className="mb-8 rounded-3xl bg-white p-6 shadow-soft ring-1 ring-line md:p-8">
+            <h2 className="text-2xl font-bold text-navy">Donate via Pay Bill</h2>
+            <p className="mt-2 text-navy/70">Your support helps us reach and empower those in need. Thank you for giving.</p>
+            <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+              <div>
+                <dt className="text-sm font-semibold text-navy/60">Pay Bill Number</dt>
+                <dd className="mt-1 text-lg font-bold text-navy">247247</dd>
+              </div>
+              <div>
+                <dt className="text-sm font-semibold text-navy/60">Account Number</dt>
+                <dd className="mt-1 text-lg font-bold text-navy">286516</dd>
+              </div>
+              <div>
+                <dt className="text-sm font-semibold text-navy/60">Account Name</dt>
+                <dd className="mt-1 text-lg font-bold text-navy">Initiative for the Needy</dd>
+              </div>
+            </dl>
+          </div>
           <DonationForm />
         </div>
       </section>
