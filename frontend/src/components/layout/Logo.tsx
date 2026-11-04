@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { images } from '@/data/site';
+import { images, site } from '@/data/site';
 
 type LogoProps = {
   tone?: 'dark' | 'light';
@@ -18,6 +18,9 @@ export function Logo({ tone = 'dark' }: LogoProps) {
         </span>
         <span className={`block text-[11px] font-medium sm:text-xs ${tone === 'light' ? 'text-white/65' : 'text-charity'}`}>
           Community Based Organization (CBO)
+        </span>
+        <span className={`mt-0.5 block text-[9px] font-medium italic leading-tight sm:text-[10px] ${tone === 'light' ? 'text-white/75' : 'text-navy/60'}`}>
+          {site.slogan}
         </span>
       </span>
     </Link>);

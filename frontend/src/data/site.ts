@@ -1,6 +1,7 @@
 export const site = {
   name: 'Initiative for the Needy Community Based Organization (CBO)',
   shortName: 'Initiative for the Needy',
+  slogan: 'Giving hope to the less fortunate in the society.',
   shortLocation: 'Kiganjo, Thika, Kenya',
   location: 'Kiganjo-Main Road, Corner 3, Kwa Kamande Stage, next to Gamoyoni Driving School, Thika, Kenya',
   postalAddress: 'P.O. Box 199, Thika, Kenya',
