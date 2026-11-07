@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { BriefcaseIcon, CheckIcon } from 'lucide-react';
 import { images } from '@/data/site';
 import { involvementOptions } from '@/data/values';
@@ -30,13 +31,106 @@ const details = [
 const skills = ['Teaching & tutoring', 'Healthcare', 'Accounting & finance', 'Photography & media', 'Legal advice', 'IT & web', 'Counselling', 'Logistics'];
 
 export const metadata: Metadata = {
-  title: 'Get Involved',
-  description: 'Donate, volunteer, partner or fundraise with Initiative for the Needy Charity Organization.',
+  title: 'Get Involved | Volunteer, Partner, or Donate | Initiative for the Needy CBO',
+  description:
+    'Join our mission to transform lives in Thika and Kiambu County. Explore ways to give, volunteer your professional skills, partner with your business, or fundraise with Initiative for the Needy CBO.',
+  keywords: [
+    'volunteer in Thika',
+    'charity partnerships Kenya',
+    'donate to Kenya charity',
+    'fundraise for Africa',
+    'corporate CSR Kenya',
+    'community volunteering Kiambu',
+    'pro-bono support charity Kenya',
+    'Initiative for the Needy get involved'
+  ],
+  alternates: {
+    canonical: 'https://www.initiativefortheneedy.com/get-involved',
+  },
+  openGraph: {
+    title: 'Get Involved | Volunteer, Partner, or Donate | Initiative for the Needy CBO',
+    description:
+      'Discover four impactful ways you can support vulnerable children, youths, widows, and elderly communities across Kiambu County.',
+    url: 'https://www.initiativefortheneedy.com/get-involved',
+    siteName: 'Initiative for the Needy Charity Organization',
+    locale: 'en_KE',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.initiativefortheneedy.com/images/hero-volunteers.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Get Involved with Initiative for the Needy CBO',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Get Involved | Volunteer, Partner, or Donate | Initiative for the Needy CBO',
+    description:
+      'Give, serve, partner, or rally others. Every kind of support helps us reach more vulnerable people around Thika.',
+    images: ['https://www.initiativefortheneedy.com/images/hero-volunteers.jpg'],
+  },
 };
 
 export default function GetInvolved() {
+  const involvementSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': 'https://www.initiativefortheneedy.com/get-involved#webpage',
+        url: 'https://www.initiativefortheneedy.com/get-involved',
+        name: 'Get Involved | Volunteer, Partner, or Donate | Initiative for the Needy CBO',
+        isPartOf: {
+          '@id': 'https://www.initiativefortheneedy.com/#website',
+        },
+        about: {
+          '@id': 'https://www.initiativefortheneedy.com/#organization',
+        },
+        description:
+          'Join our mission to transform lives in Thika and Kiambu County. Explore ways to give, volunteer your professional skills, partner with your business, or fundraise with Initiative for the Needy CBO.',
+        inLanguage: 'en-KE',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://www.initiativefortheneedy.com/get-involved#breadcrumbs',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.initiativefortheneedy.com',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Get Involved',
+            item: 'https://www.initiativefortheneedy.com/get-involved',
+          },
+        ],
+      },
+      {
+        '@type': 'ItemList',
+        '@id': 'https://www.initiativefortheneedy.com/get-involved#involvement-options',
+        name: 'Ways to Get Involved with Initiative for the Needy CBO',
+        itemListElement: involvementOptions.map((opt, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: opt.title,
+          description: opt.text,
+          url: `https://www.initiativefortheneedy.com${opt.to.startsWith('/') ? opt.to : `/${opt.to}`}`,
+        })),
+      },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json">
+        {JSON.stringify(involvementSchema)}
+      </script>
+
       <PageHero
         crumb="Get Involved"
         title="There is a place for you here."
@@ -53,7 +147,15 @@ export default function GetInvolved() {
               <Reveal key={opt.title}>
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                   <div className={`relative ${flip ? 'lg:order-2' : ''}`}>
-                    <img src={d.photo.src} alt={d.photo.alt} loading="lazy" className="aspect-[4/3] w-full rounded-3xl object-cover" />
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100 shadow-soft">
+                      <Image
+                        src={d.photo.src}
+                        alt={d.photo.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                   <div>
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-light text-brand">

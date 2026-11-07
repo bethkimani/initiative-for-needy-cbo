@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
 import { getAllArticles } from '@/sanity/api';
@@ -31,12 +32,13 @@ export async function NewsPreview() {
         <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr]">
           <Reveal>
             <article className="group relative overflow-hidden rounded-3xl bg-white shadow-soft">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100">
+                <Image
                   src={featured.photo.src}
-                  alt={featured.photo.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                  alt={featured.photo.alt || featured.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                 />
               </div>
               <div className="p-8">
@@ -60,12 +62,15 @@ export async function NewsPreview() {
                     href={`/blog/${a.slug}`}
                     className="group flex min-w-0 gap-3 rounded-2xl bg-white p-3 transition-shadow duration-200 hover:shadow-soft sm:gap-5 sm:p-4"
                   >
-                    <img
-                      src={a.photo.src}
-                      alt=""
-                      loading="lazy"
-                      className="h-20 w-20 shrink-0 rounded-xl object-cover sm:h-24 sm:w-28"
-                    />
+                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-neutral-100 sm:h-24 sm:w-28">
+                      <Image
+                        src={a.photo.src}
+                        alt={a.photo.alt || a.title}
+                        fill
+                        sizes="(max-width: 640px) 80px, 112px"
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="min-w-0">
                       <p className="text-xs font-semibold text-charity">{a.category}</p>
                       <h3 className="mt-1 font-bold leading-snug text-navy transition-colors duration-150 group-hover:text-brand">

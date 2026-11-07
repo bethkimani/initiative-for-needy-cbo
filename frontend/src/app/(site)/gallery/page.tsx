@@ -1,76 +1,125 @@
-'use client';
-
-import React, { useCallback, useState } from 'react';
-import { ZoomInIcon } from 'lucide-react';
-import { galleryCategories, galleryItems } from '@/data/gallery';
+import React, { Suspense } from 'react';
+import type { Metadata } from 'next';
+import { galleryItems } from '@/data/gallery';
 import { images } from '@/data/site';
-import { containerClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
-import { DraftNote } from '@/components/ui/DraftNote';
-import { Lightbox } from '@/components/gallery/Lightbox';
+import { GalleryClient } from './GalleryClient';
 
-export default function Gallery() {
-  const [category, setCategory] = useState('All');
-  const [open, setOpen] = useState<number | null>(null);
-  const items = galleryItems.filter((g) => category === 'All' || g.category === category);
-  const close = useCallback(() => setOpen(null), []);
+export const metadata: Metadata = {
+  title: 'Photo Gallery | Moments From Our Community Work | Initiative for the Needy CBO',
+  description:
+    'Browse photos and moments from our community outreach, food distributions, educational visits, and medical aid missions in Thika and Kiambu County.',
+  keywords: [
+    'charity photo gallery Kenya',
+    'community work photos Thika',
+    'food donation pictures Kiambu',
+    'volunteer gallery Kenya',
+    'Initiative for the Needy photos',
+    'grassroots charity gallery',
+    'community outreach pictures Kenya'
+  ],
+  alternates: {
+    canonical: 'https://www.initiativefortheneedy.com/gallery',
+  },
+  openGraph: {
+    title: 'Photo Gallery | Moments From Our Community Work | Initiative for the Needy CBO',
+    description:
+      'A visual window into community outreach days, youth mentorship, and grassroots support across Thika and Kiambu County.',
+    url: 'https://www.initiativefortheneedy.com/gallery',
+    siteName: 'Initiative for the Needy Charity Organization',
+    locale: 'en_KE',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.initiativefortheneedy.com/images/ceo-feeding.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Initiative for the Needy Community Outreach Moments',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Photo Gallery | Moments From Our Community Work | Initiative for the Needy CBO',
+    description:
+      'A visual window into outreach days, community feeding programs, and grassroots empowerment in Kenya.',
+    images: ['https://www.initiativefortheneedy.com/images/ceo-feeding.jpg'],
+  },
+};
+
+export default function GalleryPage() {
+  const gallerySchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ImageGallery',
+        '@id': 'https://www.initiativefortheneedy.com/gallery#webpage',
+        url: 'https://www.initiativefortheneedy.com/gallery',
+        name: 'Photo Gallery | Moments From Our Community Work | Initiative for the Needy CBO',
+        isPartOf: {
+          '@id': 'https://www.initiativefortheneedy.com/#website',
+        },
+        about: {
+          '@id': 'https://www.initiativefortheneedy.com/#organization',
+        },
+        description:
+          'Browse photos and moments from our community outreach, food distributions, educational visits, and medical aid missions in Thika and Kiambu County.',
+        inLanguage: 'en-KE',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://www.initiativefortheneedy.com/gallery#breadcrumbs',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.initiativefortheneedy.com',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Gallery',
+            item: 'https://www.initiativefortheneedy.com/gallery',
+          },
+        ],
+      },
+      {
+        '@type': 'ItemList',
+        '@id': 'https://www.initiativefortheneedy.com/gallery#image-list',
+        name: 'Community Work Gallery Images',
+        itemListElement: galleryItems.map((item, index) => ({
+          '@type': 'ImageObject',
+          position: index + 1,
+          name: item.caption,
+          description: item.caption,
+          contentUrl: item.photo.src.startsWith('http')
+            ? item.photo.src
+            : `https://www.initiativefortheneedy.com${item.photo.src}`,
+          creator: {
+            '@id': 'https://www.initiativefortheneedy.com/#organization',
+          },
+        })),
+      },
+    ],
+  };
 
   return (
     <>
+      <script type="application/ld+json">
+        {JSON.stringify(gallerySchema)}
+      </script>
+
       <PageHero
         crumb="Gallery"
         title="Moments from our work"
         intro="A window into outreach days, community support and the people who make it happen."
-        photo={images.ceoFeeding} />
-      
-      <section className="py-16 md:py-24">
-        <div className={containerClass}>
-          <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
-            <div role="group" aria-label="Filter gallery" className="flex flex-wrap gap-2">
-              {galleryCategories.map((c) =>
-              <button
-                key={c}
-                type="button"
-                aria-pressed={category === c}
-                onClick={() => setCategory(c)}
-                className={`min-h-11 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
-                category === c ? 'bg-navy text-white' : 'bg-soft text-navy/70 hover:text-navy'}`
-                }>
-                
-                  {c}
-                </button>
-              )}
-            </div>
-            <DraftNote>Images of children and vulnerable people are published only with appropriate consent.</DraftNote>
-          </div>
-          <ul className="columns-1 gap-5 sm:columns-2 lg:columns-3">
-            {items.map((g, i) =>
-            <li key={g.photo.src + g.caption} className="mb-5 break-inside-avoid">
-                <button
-                type="button"
-                onClick={() => setOpen(i)}
-                className="group relative block w-full overflow-hidden rounded-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/40"
-                aria-label={`Open image: ${g.caption}`}>
-                
-                  <img
-                  src={g.photo.src}
-                  alt={g.photo.alt}
-                  loading="lazy"
-                  className="w-full bg-white object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
-                
-                  <span className="absolute inset-0 flex items-end bg-gradient-to-t from-navy/80 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-                    <span className="flex w-full items-center justify-between text-left text-sm font-medium text-white">
-                      {g.caption}
-                      <ZoomInIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
-                    </span>
-                  </span>
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
-      </section>
-      <Lightbox items={items} index={open} onClose={close} onChange={setOpen} />
-    </>);
+        photo={images.ceoFeeding}
+      />
 
+      <Suspense fallback={<div className="py-24 text-center text-navy/60">Loading gallery...</div>}>
+        <GalleryClient />
+      </Suspense>
+    </>
+  );
 }

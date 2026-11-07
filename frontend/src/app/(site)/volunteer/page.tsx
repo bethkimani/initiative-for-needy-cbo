@@ -1,140 +1,108 @@
-'use client';
-
-import React from 'react';
-import Link from 'next/link';
-import { LoaderCircleIcon } from 'lucide-react';
-import { useFormSubmission } from '@/hooks/useFormSubmission';
+import React, { Suspense } from 'react';
+import type { Metadata } from 'next';
 import { images } from '@/data/site';
-import { causes } from '@/data/causes';
-import { buttonClasses, containerClass, inputClass } from '@/utils/styles';
-import { isBlank, isEmail, isPhone } from '@/utils/validation';
 import { PageHero } from '@/components/ui/PageHero';
-import { Field } from '@/components/ui/Field';
-import { FormStatus } from '@/components/ui/FormStatus';
-import { Honeypot } from '@/components/ui/Honeypot';
-import { ChoiceChips } from '@/components/ui/ChoiceChips';
+import { VolunteerClient } from './VolunteerClient';
 
-const skills = ['Teaching', 'Healthcare', 'Cooking & catering', 'Driving & logistics', 'Photography & media', 'Finance', 'Counselling', 'IT & web', 'Event planning'];
-const availability = ['Weekdays', 'Weekends', 'Evenings', 'One-off events'];
-const areas = ['Community outreach', 'Events', 'Office & administration', 'Fundraising', 'Professional / pro-bono'];
+export const metadata: Metadata = {
+  title: 'Volunteer With Us | Community Charity Volunteering | Initiative for the Needy CBO',
+  description:
+    'Offer your time, mentorship, or professional skills to empower vulnerable children, youths, widows, and elderly in Thika and Kiambu County with Initiative for the Needy CBO.',
+  keywords: [
+    'volunteer in Kenya',
+    'volunteer Thika',
+    'NGO volunteering Kiambu',
+    'community volunteer opportunities Kenya',
+    'pro bono charity Kenya',
+    'volunteer with orphans and elderly',
+    'charity work Thika',
+    'Initiative for the Needy volunteer'
+  ],
+  alternates: {
+    canonical: 'https://www.initiativefortheneedy.com/volunteer',
+  },
+  openGraph: {
+    title: 'Volunteer With Us | Community Charity Volunteering | Initiative for the Needy CBO',
+    description:
+      'Give your time. Change a life. Join Initiative for the Needy CBO as a community volunteer or pro-bono specialist in Kiambu County.',
+    url: 'https://www.initiativefortheneedy.com/volunteer',
+    siteName: 'Initiative for the Needy Charity Organization',
+    locale: 'en_KE',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.initiativefortheneedy.com/images/volunteers-office.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Initiative for the Needy Volunteers',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Volunteer With Us | Initiative for the Needy CBO',
+    description:
+      'Offer your time and skills to support vulnerable communities in Kiambu County.',
+    images: ['https://www.initiativefortheneedy.com/images/volunteers-office.jpg'],
+  },
+};
 
-export default function Volunteer() {
-  const form = useFormSubmission(
-    {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      town: '',
-      skills: [] as string[],
-      interests: [] as string[],
-      availability: [] as string[],
-      area: areas[0],
-      motivation: '',
-      consent: false
-    },
-    (v) => {
-      const e: Partial<Record<keyof typeof v, string>> = {};
-      if (isBlank(v.firstName)) e.firstName = 'Required.';
-      if (isBlank(v.lastName)) e.lastName = 'Required.';
-      if (!isEmail(v.email)) e.email = 'Enter a valid email address.';
-      if (!isPhone(v.phone)) e.phone = 'Enter a valid phone number.';
-      if (v.availability.length === 0) e.availability = 'Choose at least one option.';
-      if (!v.consent) e.consent = 'Please agree to the privacy notice to continue.';
-      return e;
-    }
-  );
-  const { values, errors, setField } = form;
+export default function VolunteerPage() {
+  const volunteerSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': 'https://www.initiativefortheneedy.com/volunteer#webpage',
+        url: 'https://www.initiativefortheneedy.com/volunteer',
+        name: 'Volunteer With Us | Community Charity Volunteering | Initiative for the Needy CBO',
+        isPartOf: {
+          '@id': 'https://www.initiativefortheneedy.com/#website',
+        },
+        about: {
+          '@id': 'https://www.initiativefortheneedy.com/#organization',
+        },
+        description:
+          'Offer your time, mentorship, or professional skills to empower vulnerable children, youths, widows, and elderly in Thika and Kiambu County with Initiative for the Needy CBO.',
+        inLanguage: 'en-KE',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://www.initiativefortheneedy.com/volunteer#breadcrumbs',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.initiativefortheneedy.com',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Volunteer',
+            item: 'https://www.initiativefortheneedy.com/volunteer',
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
+      <script type="application/ld+json">
+        {JSON.stringify(volunteerSchema)}
+      </script>
+
       <PageHero
         crumb="Volunteer"
         title="Give your time. Change a life."
         intro="Offer your time and skills to support vulnerable communities in Kiambu County. Online sign-up is not connected yet; please contact us directly to discuss volunteering."
-        photo={images.volunteersOffice} />
-      
-      <section className="bg-soft py-16 md:py-24">
-        <div className={`${containerClass} grid gap-12 lg:grid-cols-[1fr_2fr]`}>
-          <aside>
-            <h2 className="text-2xl font-bold text-navy">What to expect</h2>
-            <ol className="mt-6 space-y-5">
-              {['Contact us by phone or email', 'Tell us about your interests and availability', 'Discuss how your skills could support our programmes'].map((s, i) =>
-              <li key={s} className="flex gap-4">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>
-                  <span className="pt-1 text-navy/80">{s}</span>
-                </li>
-              )}
-            </ol>
-            <img src={images.feeding.src} alt={images.feeding.alt} loading="lazy" className="mt-10 hidden aspect-[3/4] w-full rounded-3xl object-cover lg:block" />
-          </aside>
+        photo={images.volunteersOffice}
+      />
 
-          <form onSubmit={form.handleSubmit} noValidate className="relative space-y-8 rounded-3xl bg-white p-6 shadow-soft ring-1 ring-line md:p-10">
-            <Honeypot {...form.honeypotProps} />
-            <fieldset className="grid gap-5 sm:grid-cols-2">
-              <legend className="mb-4 font-display text-lg font-bold text-navy">Personal details</legend>
-              <Field id="firstName" label="First name" error={errors.firstName} required>
-                <input id="firstName" autoComplete="given-name" value={values.firstName} onChange={(e) => setField('firstName', e.target.value)} aria-invalid={Boolean(errors.firstName)} className={inputClass} />
-              </Field>
-              <Field id="lastName" label="Last name" error={errors.lastName} required>
-                <input id="lastName" autoComplete="family-name" value={values.lastName} onChange={(e) => setField('lastName', e.target.value)} aria-invalid={Boolean(errors.lastName)} className={inputClass} />
-              </Field>
-              <Field id="email" label="Email" error={errors.email} required>
-                <input id="email" type="email" autoComplete="email" value={values.email} onChange={(e) => setField('email', e.target.value)} aria-invalid={Boolean(errors.email)} className={inputClass} />
-              </Field>
-              <Field id="phone" label="Phone" error={errors.phone} required>
-                <input id="phone" type="tel" autoComplete="tel" value={values.phone} onChange={(e) => setField('phone', e.target.value)} aria-invalid={Boolean(errors.phone)} className={inputClass} placeholder="+254 7XX XXX XXX" />
-              </Field>
-              <Field id="town" label="Town / area" className="sm:col-span-2">
-                <input id="town" value={values.town} onChange={(e) => setField('town', e.target.value)} className={inputClass} placeholder="e.g. Thika" />
-              </Field>
-            </fieldset>
-
-            <div className="space-y-6 border-t border-line pt-8">
-              <ChoiceChips id="skills" label="Skills you can offer" options={skills} selected={values.skills} onChange={(v) => setField('skills', v)} />
-              <ChoiceChips id="interests" label="Causes you care about" options={causes.map((c) => c.title)} selected={values.interests} onChange={(v) => setField('interests', v)} />
-              <ChoiceChips id="availability" label="Availability *" options={availability} selected={values.availability} onChange={(v) => setField('availability', v)} error={errors.availability} />
-              <Field id="area" label="Preferred volunteering area">
-                <select id="area" value={values.area} onChange={(e) => setField('area', e.target.value)} className={inputClass}>
-                  {areas.map((a) =>
-                  <option key={a}>{a}</option>
-                  )}
-                </select>
-              </Field>
-              <Field id="motivation" label="Why would you like to volunteer? (optional)">
-                <textarea id="motivation" rows={4} value={values.motivation} onChange={(e) => setField('motivation', e.target.value)} className={inputClass} />
-              </Field>
-            </div>
-
-            <div className="border-t border-line pt-6">
-              <label className="flex items-start gap-3 text-sm text-navy/80">
-                <input
-                  id="consent"
-                  type="checkbox"
-                  checked={values.consent}
-                  onChange={(e) => setField('consent', e.target.checked)}
-                  aria-invalid={Boolean(errors.consent)}
-                  className="mt-0.5 h-4 w-4 rounded border-line text-brand focus:ring-brand" />
-                
-                <span>
-                  I agree that my details may be used to contact me about volunteering, as described in the{' '}
-                  <Link href="/privacy" className="font-semibold text-brand hover:underline">
-                    Privacy Policy
-                  </Link>
-                  .
-                </span>
-              </label>
-              {errors.consent && <p className="mt-1.5 text-xs font-medium text-charity">{errors.consent}</p>}
-            </div>
-
-            <button type="submit" disabled={form.status === 'submitting'} className={buttonClasses('red', 'lg', 'w-full sm:w-auto')}>
-              {form.status === 'submitting' && <LoaderCircleIcon className="h-4 w-4 animate-spin" aria-hidden="true" />}
-              Register as a Volunteer
-            </button>
-            <FormStatus status={form.status} onReset={form.resetStatus} />
-          </form>
-        </div>
-      </section>
-    </>);
-
+      <Suspense fallback={<div className="py-24 text-center text-navy/60">Loading volunteer form...</div>}>
+        <VolunteerClient />
+      </Suspense>
+    </>
+  );
 }

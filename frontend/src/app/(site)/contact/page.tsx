@@ -1,157 +1,139 @@
-'use client';
+import React, { Suspense } from 'react';
+import type { Metadata } from 'next';
+import { site } from '@/data/site';
+import { containerClass } from '@/utils/styles';
+import { ContactClient } from './ContactClient';
 
-import React from 'react';
-import { useSearchParams } from 'next/navigation';
-import { HandshakeIcon, LoaderCircleIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
-import { useFormSubmission } from '@/hooks/useFormSubmission';
-import { images, site } from '@/data/site';
-import { buttonClasses, containerClass, inputClass } from '@/utils/styles';
-import { isBlank, isEmail, isPhone } from '@/utils/validation';
-import { PageHero } from '@/components/ui/PageHero';
-import { Field } from '@/components/ui/Field';
-import { FormStatus } from '@/components/ui/FormStatus';
-import { Honeypot } from '@/components/ui/Honeypot';
-import { ButtonLink } from '@/components/ui/ButtonLink';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.initiativefortheneedy.com';
 
-const topics = ['General enquiry', 'Volunteering', 'Partnership', 'Fundraising', 'Event registration', 'Consultation', 'Media'];
+export const metadata: Metadata = {
+  title: 'Contact Us | Initiative for the Needy Charity Organization · Thika, Kenya',
+  description:
+    'Get in touch with Initiative for the Needy, a registered Community-Based Charity Organization (CBO) in Thika, Kiambu County, Kenya. Visit our office, call +254 721 286 516, or send an inquiry.',
+  keywords: [
+    'Contact Initiative for the Needy',
+    'Charity Office Thika',
+    'Kiambu CBO Contact',
+    'Kiganjo Thika Charity Organization',
+    'Volunteer Inquiries Kenya',
+    'Community Organization Phone Number Kenya',
+    'Donation Inquiries Kenya',
+  ],
+  alternates: {
+    canonical: `${siteUrl}/contact`,
+  },
+  openGraph: {
+    title: 'Contact Us | Initiative for the Needy Charity Organization',
+    description:
+      'Reach out to our team in Kiganjo, Thika, Kenya for inquiries, sponsorships, partnerships, and volunteering.',
+    url: `${siteUrl}/contact`,
+    type: 'website',
+    images: [
+      {
+        url: `${siteUrl}/995f53cd-348f-4199-84ed-6a59f6fffa93.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Initiative for the Needy Charity Organization Office and Team',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us | Initiative for the Needy',
+    description:
+      'Contact our community team in Kiambu County, Kenya by phone, email, or in-person visit.',
+    images: [`${siteUrl}/995f53cd-348f-4199-84ed-6a59f6fffa93.jpg`],
+  },
+};
 
 export default function Contact() {
-  const params = useSearchParams();
-  const topicParam = params.get('topic');
-  const eventParam = params.get('event');
-
-  const form = useFormSubmission(
-    {
-      name: '',
-      email: '',
-      phone: '',
-      topic: topicParam && topics.includes(topicParam) ? topicParam : 'General enquiry',
-      message: eventParam ? `I would like to register for: ${eventParam}` : ''
-    },
-    (v) => {
-      const e: Partial<Record<keyof typeof v, string>> = {};
-      if (isBlank(v.name)) e.name = 'Please enter your name.';
-      if (!isEmail(v.email)) e.email = 'Enter a valid email address.';
-      if (v.phone && !isPhone(v.phone)) e.phone = 'Enter a valid phone number.';
-      if (v.message.trim().length < 10) e.message = 'Please write a short message (at least 10 characters).';
-      return e;
-    }
-  );
-  const { values, errors, setField } = form;
-
-  const info: { icon: LucideIcon; label: string; value: string; href?: string }[] = [
-  { icon: MapPinIcon, label: 'Office', value: site.location },
-  { icon: MapPinIcon, label: 'Postal address', value: site.postalAddress },
-  ...site.phones.map((phone, index) => ({
-    icon: PhoneIcon,
-    label: index === 0 ? 'Call us' : 'Alternate phone',
-    value: phone,
-    href: `tel:${phone}`
-  })),
-  { icon: MailIcon, label: 'Email', value: site.email, href: `mailto:${site.email}` }];
-
+  const contactJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ContactPage',
+        '@id': `${siteUrl}/contact/#webpage`,
+        url: `${siteUrl}/contact`,
+        name: 'Contact Us | Initiative for the Needy Charity Organization',
+        description:
+          'Official contact details, location, and inquiry channels for Initiative for the Needy CBO in Thika, Kenya.',
+        isPartOf: {
+          '@id': `${siteUrl}/#website`,
+        },
+        about: {
+          '@id': `${siteUrl}/#organization`,
+        },
+        breadcrumb: {
+          '@id': `${siteUrl}/contact/#breadcrumb`,
+        },
+        mainEntity: {
+          '@type': 'NonprofitOrganization',
+          '@id': `${siteUrl}/#organization`,
+          name: site.name,
+          telephone: site.phone,
+          email: site.email,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Kiganjo-Main Road, Corner 3, Kwa Kamande Stage, next to Gamoyoni Driving School',
+            addressLocality: 'Thika',
+            addressRegion: 'Kiambu County',
+            postalCode: '01000',
+            addressCountry: 'KE',
+          },
+          contactPoint: [
+            {
+              '@type': 'ContactPoint',
+              telephone: site.phone,
+              contactType: 'Community Assistance & Donor Support',
+              email: site.email,
+              areaServed: 'KE',
+              availableLanguage: ['English', 'Swahili'],
+            },
+            {
+              '@type': 'ContactPoint',
+              telephone: site.phones[1] || site.phone,
+              contactType: 'Alternate Office Line',
+              areaServed: 'KE',
+              availableLanguage: ['English', 'Swahili'],
+            },
+          ],
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${siteUrl}/contact/#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Contact Us',
+            item: `${siteUrl}/contact`,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
-      <PageHero
-        crumb="Contact"
-        title="Let’s talk."
-        intro="Questions, partnership ideas or ready to volunteer? We would love to hear from you."
-        photo={images.volunteersOffice} />
-      
-      <section className="py-16 md:py-24">
-        <div className={`${containerClass} grid gap-12 lg:grid-cols-[1fr_1.4fr]`}>
-          <div>
-            <ul className="space-y-6">
-              {info.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.label} className="flex gap-4">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-light text-brand">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <p className="text-sm text-navy/55">{item.label}</p>
-                      {item.href ?
-                      <a href={item.href} className="font-semibold text-navy hover:text-brand">
-                          {item.value}
-                        </a> :
-
-                      <p className="font-semibold text-navy">{item.value}</p>
-                      }
-                    </div>
-                  </li>);
-
-              })}
-            </ul>
-
-            <div className="mt-10 rounded-3xl bg-navy p-7 text-white">
-              <HandshakeIcon className="h-7 w-7 text-gold" aria-hidden="true" />
-              <h2 className="mt-4 text-xl font-bold">Partnership or volunteering?</h2>
-              <p className="mt-2 text-sm text-white/70">Our online forms are not connected yet. For a response, please call or email us directly.</p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <ButtonLink to="/partnerships" variant="light" size="sm">
-                  Partnership inquiry
-                </ButtonLink>
-                <ButtonLink to="/volunteer" variant="outlineLight" size="sm">
-                  Volunteer sign-up
-                </ButtonLink>
-              </div>
-            </div>
-
-            <div className="mt-10 flex aspect-[16/10] flex-col items-center justify-center rounded-3xl border border-dashed border-line bg-soft p-6 text-center">
-              <MapPinIcon className="h-8 w-8 text-charity" aria-hidden="true" />
-              <p className="mt-3 font-semibold text-navy">Find our office</p>
-              <p className="mt-1 max-w-xs text-sm text-navy/60">
-                {site.location}
-              </p>
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.location)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 text-sm font-semibold text-brand hover:underline">
-                
-                Search this location on Google Maps
-              </a>
-            </div>
+      <script type="application/ld+json">
+        {JSON.stringify(contactJsonLd)}
+      </script>
+      <Suspense
+        fallback={
+          <div className={`${containerClass} py-24 text-center text-navy/60`}>
+            Loading contact page...
           </div>
-
-          <form onSubmit={form.handleSubmit} noValidate className="relative h-fit space-y-5 rounded-3xl bg-white p-6 shadow-soft ring-1 ring-line md:p-10">
-            <Honeypot {...form.honeypotProps} />
-            <h2 className="text-2xl font-bold text-navy">Send us a message</h2>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <Field id="name" label="Full name" error={errors.name} required>
-                <input id="name" autoComplete="name" value={values.name} onChange={(e) => setField('name', e.target.value)} aria-invalid={Boolean(errors.name)} className={inputClass} />
-              </Field>
-              <Field id="email" label="Email" error={errors.email} required>
-                <input id="email" type="email" autoComplete="email" value={values.email} onChange={(e) => setField('email', e.target.value)} aria-invalid={Boolean(errors.email)} className={inputClass} />
-              </Field>
-              <Field id="phone" label="Phone (optional)" error={errors.phone}>
-                <input id="phone" type="tel" autoComplete="tel" value={values.phone} onChange={(e) => setField('phone', e.target.value)} aria-invalid={Boolean(errors.phone)} className={inputClass} />
-              </Field>
-              <Field id="topic" label="Topic">
-                <select id="topic" value={values.topic} onChange={(e) => setField('topic', e.target.value)} className={inputClass}>
-                  {topics.map((t) =>
-                  <option key={t}>{t}</option>
-                  )}
-                </select>
-              </Field>
-            </div>
-            <Field id="message" label="Message" error={errors.message} required>
-              <textarea id="message" rows={6} value={values.message} onChange={(e) => setField('message', e.target.value)} aria-invalid={Boolean(errors.message)} className={inputClass} />
-            </Field>
-            <p className="text-xs text-navy/55">
-              We use your details only to respond to your message. See our <a href="/privacy" className="text-brand hover:underline">Privacy Policy</a>.
-            </p>
-            <button type="submit" disabled={form.status === 'submitting'} className={buttonClasses('blue', 'lg', 'w-full sm:w-auto')}>
-              {form.status === 'submitting' && <LoaderCircleIcon className="h-4 w-4 animate-spin" aria-hidden="true" />}
-              Send Message
-            </button>
-            <FormStatus status={form.status} onReset={form.resetStatus} />
-          </form>
-        </div>
-      </section>
-    </>);
-
+        }
+      >
+        <ContactClient />
+      </Suspense>
+    </>
+  );
 }

@@ -229,10 +229,9 @@ export default function Home() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
-      />
+      <script type="application/ld+json">
+        {JSON.stringify(homeJsonLd)}
+      </script>
       <HeroCarousel />
       <AboutIntro />
       <ImpactStats />

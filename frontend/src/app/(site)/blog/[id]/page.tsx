@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeftIcon } from 'lucide-react';
@@ -175,11 +176,16 @@ async function ArticleContent({ params }: PageProps) {
         </header>
 
         <div className={`${containerClass} mt-10 max-w-5xl`}>
-          <img
-            src={article.photo.src}
-            alt={article.photo.alt}
-            className="aspect-[16/9] w-full rounded-3xl object-cover shadow-sm"
-          />
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-neutral-100 shadow-sm">
+            <Image
+              src={article.photo.src}
+              alt={article.photo.alt || article.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 960px"
+              className="object-cover"
+            />
+          </div>
         </div>
 
         <div className={`${containerClass} max-w-3xl py-14`}>

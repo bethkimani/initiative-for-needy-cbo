@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
 import { images } from '@/data/site';
@@ -12,16 +13,25 @@ export function AboutIntro() {
     <section className="py-20 md:py-28">
       <div className={`${containerClass} grid items-center gap-14 lg:grid-cols-2 lg:gap-20`}>
         <Reveal className="relative">
-          <div className="overflow-hidden rounded-3xl">
-            <img
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100 shadow-soft">
+            <Image
               src={images.volunteersOffice.src}
               alt={images.volunteersOffice.alt}
-              loading="lazy"
-              className="aspect-[4/3] w-full object-cover" />
-            
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
           <div className="absolute -bottom-10 -right-2 hidden w-44 overflow-hidden rounded-2xl border-[6px] border-white shadow-lift sm:block md:w-52">
-            <img src={images.foodDonation.src} alt={images.foodDonation.alt} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+            <div className="relative aspect-[3/4] w-full bg-neutral-100">
+              <Image
+                src={images.foodDonation.src}
+                alt={images.foodDonation.alt}
+                fill
+                sizes="208px"
+                className="object-cover"
+              />
+            </div>
           </div>
           <div className="absolute left-2 top-4 rounded-2xl bg-white px-4 py-3 shadow-lift sm:-left-3 sm:top-6 sm:px-5 sm:py-4">
             <p className="font-display text-sm font-bold text-navy">Kiganjo-Main Road</p>

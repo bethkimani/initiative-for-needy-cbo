@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { SearchIcon } from 'lucide-react';
 import { articleCategories as defaultCategories } from '@/data/articles';
@@ -61,11 +62,16 @@ export function BlogListClient({ initialArticles }: BlogListClientProps) {
         <div className={containerClass}>
           {featured && !isFiltering && (
             <article className="group relative grid overflow-hidden rounded-3xl bg-soft lg:grid-cols-2">
-              <img
-                src={featured.photo.src}
-                alt={featured.photo.alt}
-                className="aspect-[16/10] h-full w-full object-cover lg:aspect-auto"
-              />
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-200 lg:aspect-auto lg:h-full lg:min-h-[300px]">
+                <Image
+                  src={featured.photo.src}
+                  alt={featured.photo.alt || featured.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
               <div className="flex flex-col justify-center p-6 sm:p-8 md:p-12">
                 <p className="text-xs font-semibold text-charity">
                   Featured · {featured.category}

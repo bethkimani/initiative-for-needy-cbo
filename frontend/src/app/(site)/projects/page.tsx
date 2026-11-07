@@ -1,128 +1,119 @@
-'use client';
-
-import React, { useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { SearchIcon } from 'lucide-react';
+import React from 'react';
+import type { Metadata } from 'next';
 import { projects } from '@/data/projects';
 import { images } from '@/data/site';
-import { containerClass, inputClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
-import { ProjectCard } from '@/components/cards/ProjectCard';
 import { FinalCTA } from '@/components/home/FinalCTA';
+import { ProjectsListClient } from './ProjectsListClient';
 
-const categories = ['All', 'Education', 'Community Support', 'Outreach', 'Development'];
-const statuses = ['All', 'Current', 'Completed', 'Upcoming'];
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.initiativefortheneedy.com';
+
+export const metadata: Metadata = {
+  title: 'Our Projects | Community Impacts & Milestones in Kenya',
+  description:
+    'Discover completed and ongoing charity projects by Initiative for the Needy in Kiambu County, Kenya. Vocational training with KISSE College, elderly outreaches, and child nutrition.',
+  keywords: [
+    'Charity Projects Kenya',
+    'Community Projects Kiambu County',
+    'Vocational Training KISSE College Thika',
+    'International Day of Older Persons Kenya',
+    'Orphan Support Projects Kiambu',
+    'Kiandutu Slums Food Relief',
+    'Initiative for the Needy Projects',
+    'Community Development Projects Kenya',
+  ],
+  alternates: {
+    canonical: `${siteUrl}/projects`,
+  },
+  openGraph: {
+    title: 'Our Projects | Community Impacts & Milestones in Kenya',
+    description:
+      'Verified community programmes and achievements by Initiative for the Needy CBO across Kiambu County, Kenya.',
+    url: `${siteUrl}/projects`,
+    type: 'website',
+    images: [
+      {
+        url: `${siteUrl}/995f53cd-348f-4199-84ed-6a59f6fffa93.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Initiative for the Needy Charity Projects',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Projects | Community Impacts & Milestones in Kenya',
+    description:
+      'Explore community impact projects by Initiative for the Needy Charity Organization in Kenya.',
+    images: [`${siteUrl}/995f53cd-348f-4199-84ed-6a59f6fffa93.jpg`],
+  },
+};
 
 export default function Projects() {
-  const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('All');
-  const [status, setStatus] = useState('All');
-
-  const results = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return projects.filter(
-      (p) =>
-      (category === 'All' || p.category === category) && (
-      status === 'All' || p.status === status) && (
-      !q || `${p.title} ${p.summary} ${p.location}`.toLowerCase().includes(q))
-    );
-  }, [query, category, status]);
+  const projectsJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${siteUrl}/projects/#webpage`,
+        url: `${siteUrl}/projects`,
+        name: 'Our Projects | Initiative for the Needy Charity Organization',
+        description:
+          'Explore completed and ongoing charity projects by Initiative for the Needy in Kiambu County, Kenya.',
+        publisher: {
+          '@id': `${siteUrl}/#organization`,
+        },
+        breadcrumb: {
+          '@id': `${siteUrl}/projects/#breadcrumb`,
+        },
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: projects.map((p, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: p.title,
+            url: `${siteUrl}/projects/${p.slug}`,
+            description: p.summary,
+            image: p.photo.src.startsWith('http')
+              ? p.photo.src
+              : `${siteUrl}${p.photo.src.startsWith('/') ? '' : '/'}${p.photo.src}`,
+          })),
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${siteUrl}/projects/#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Our Projects',
+            item: `${siteUrl}/projects`,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
+      <script type="application/ld+json">
+        {JSON.stringify(projectsJsonLd)}
+      </script>
       <PageHero
         crumb="Projects"
         title="Our Projects"
-        intro="Explore our completed programmes, ongoing activities and future plans for vulnerable communities across Kiambu County."
-        photo={images.foodDonation} />
-      
-      <section className="py-16 md:py-24">
-        <div className={containerClass}>
-          <div className="mb-10 grid gap-4 rounded-3xl bg-soft p-5 md:grid-cols-[1fr_auto] md:items-center md:p-6">
-            <div className="relative">
-              <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy/40" aria-hidden="true" />
-              <label htmlFor="project-search" className="sr-only">
-                Search projects
-              </label>
-              <input
-                id="project-search"
-                type="search"
-                placeholder="Search projects or locations"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className={`${inputClass} pl-11`} />
-              
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <label className="sr-only" htmlFor="project-status">
-                Status
-              </label>
-              <select id="project-status" value={status} onChange={(e) => setStatus(e.target.value)} className={`${inputClass} w-auto`}>
-                {statuses.map((s) =>
-                <option key={s} value={s}>
-                    {s === 'All' ? 'All statuses' : s}
-                  </option>
-                )}
-              </select>
-            </div>
-            <div role="group" aria-label="Filter by category" className="flex flex-wrap gap-2 md:col-span-2">
-              {categories.map((c) =>
-              <button
-                key={c}
-                type="button"
-                aria-pressed={category === c}
-                onClick={() => setCategory(c)}
-                className={`min-h-11 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-150 ${
-                category === c ? 'bg-navy text-white' : 'bg-white text-navy/70 hover:text-navy'}`
-                }>
-                
-                  {c}
-                </button>
-              )}
-            </div>
-          </div>
-          <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-            <p className="text-sm text-navy/60" aria-live="polite">
-              Showing {results.length} of {projects.length} projects
-            </p>
-            <p className="text-sm text-navy/60">Completed work and future plans are identified in each project description.</p>
-          </div>
-          {results.length === 0 ?
-          <div className="rounded-3xl border border-dashed border-line py-20 text-center">
-              <p className="font-display text-xl font-bold text-navy">No projects match your filters</p>
-              <button
-              type="button"
-              onClick={() => {
-                setQuery('');
-                setCategory('All');
-                setStatus('All');
-              }}
-              className="mt-4 text-sm font-semibold text-brand hover:underline">
-              
-                Clear all filters
-              </button>
-            </div> :
-
-          <motion.div layout className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-              <AnimatePresence mode="popLayout">
-                {results.map((p) =>
-              <motion.div
-                key={p.slug}
-                layout
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}>
-                
-                    <ProjectCard project={p} />
-                  </motion.div>
-              )}
-              </AnimatePresence>
-            </motion.div>
-          }
-        </div>
-      </section>
+        intro="Explore our completed programmes, ongoing activities and verified community milestones across Kiambu County."
+        photo={images.foodDonation}
+      />
+      <ProjectsListClient initialProjects={projects} />
       <FinalCTA />
-    </>);
-
+    </>
+  );
 }

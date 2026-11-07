@@ -7,6 +7,10 @@ import { metadata as studioMetadata, viewport as studioViewport } from 'next-san
 export const metadata: Metadata = {
   ...studioMetadata,
   title: 'Sanity Studio | Initiative for the Needy CMS',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export const viewport: Viewport = {

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import { urlForImage } from '@/sanity/image';
 
@@ -226,9 +227,12 @@ const components: PortableTextComponents = {
       if (!url) return null;
       return (
         <figure className="my-10">
-          <img
+          <Image
             src={url}
             alt={value.alt || 'Initiative for the Needy story photo'}
+            width={1200}
+            height={700}
+            sizes="(max-width: 1024px) 100vw, 800px"
             className="w-full rounded-3xl object-cover shadow-sm"
           />
           {value.caption && (
