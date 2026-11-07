@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
-import { HandshakeIcon, LoaderCircleIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
+import { CheckCircle2Icon, HandshakeIcon, LoaderCircleIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useFormSubmission } from '@/hooks/useFormSubmission';
 import { images, site } from '@/data/site';
@@ -41,10 +41,11 @@ export function ContactClient() {
       const e: Partial<Record<keyof typeof v, string>> = {};
       if (isBlank(v.name)) e.name = 'Please enter your name.';
       if (!isEmail(v.email)) e.email = 'Enter a valid email address.';
-      if (v.phone && !isPhone(v.phone)) e.phone = 'Enter a valid phone number.';
-      if (v.message.trim().length < 10) e.message = 'Please write a short message (at least 10 characters).';
+      if (v.phone && !isPhone(v.phone)) e.phone = 'Enter a valid phone number (e.g. 0721 286 516).';
+      if (isBlank(v.message)) e.message = 'Please enter your message.';
       return e;
-    }
+    },
+    { formType: 'contact' }
   );
   const { values, errors, setField } = form;
 
@@ -126,88 +127,132 @@ export function ContactClient() {
             </div>
           </div>
 
-          <form
-            onSubmit={form.handleSubmit}
-            noValidate
-            className="relative h-fit space-y-5 rounded-3xl bg-white p-6 shadow-soft ring-1 ring-line md:p-10"
-          >
-            <Honeypot {...form.honeypotProps} />
-            <h2 className="text-2xl font-bold text-navy">Send us a message</h2>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <Field id="name" label="Full name" error={errors.name} required>
-                <input
-                  id="name"
-                  autoComplete="name"
-                  value={values.name}
-                  onChange={(e) => setField('name', e.target.value)}
-                  aria-invalid={Boolean(errors.name)}
-                  className={inputClass}
-                />
-              </Field>
-              <Field id="email" label="Email" error={errors.email} required>
-                <input
-                  id="email"
-                  type="email"
-                  autoComplete="email"
-                  value={values.email}
-                  onChange={(e) => setField('email', e.target.value)}
-                  aria-invalid={Boolean(errors.email)}
-                  className={inputClass}
-                />
-              </Field>
-              <Field id="phone" label="Phone (optional)" error={errors.phone}>
-                <input
-                  id="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  value={values.phone}
-                  onChange={(e) => setField('phone', e.target.value)}
-                  aria-invalid={Boolean(errors.phone)}
-                  className={inputClass}
-                />
-              </Field>
-              <Field id="topic" label="Topic">
-                <select
-                  id="topic"
-                  value={values.topic}
-                  onChange={(e) => setField('topic', e.target.value)}
-                  className={inputClass}
-                >
-                  {topics.map((t) => (
-                    <option key={t}>{t}</option>
+          {form.status === 'success' ? (
+            <div className="relative h-fit rounded-3xl bg-white p-8 text-center shadow-soft ring-1 ring-emerald-200 md:p-12">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                <CheckCircle2Icon className="h-9 w-9" aria-hidden="true" />
+              </div>
+              <h2 className="mt-6 font-display text-2xl font-bold text-navy sm:text-3xl">
+                Thank you! Your message has been sent.
+              </h2>
+              <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-navy/75">
+                Our community team has received your message and will review it promptly.
+              </p>
+
+              <div className="mt-8 rounded-2xl bg-soft p-5 text-sm text-navy/80">
+                <p className="font-semibold text-navy">Need an immediate answer?</p>
+                <p className="mt-1">
+                  You can also call or WhatsApp our Thika office directly on{' '}
+                  {site.phones.map((phone, index) => (
+                    <React.Fragment key={phone}>
+                      {index > 0 && ' or '}
+                      <a href={`tel:${phone}`} className="font-bold text-brand hover:underline">
+                        {phone}
+                      </a>
+                    </React.Fragment>
                   ))}
-                </select>
-              </Field>
+                  .
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <button
+                  type="button"
+                  onClick={form.resetForm}
+                  className={buttonClasses('outline', 'md')}
+                >
+                  Send Another Message
+                </button>
+              </div>
             </div>
-            <Field id="message" label="Message" error={errors.message} required>
-              <textarea
-                id="message"
-                rows={6}
-                value={values.message}
-                onChange={(e) => setField('message', e.target.value)}
-                aria-invalid={Boolean(errors.message)}
-                className={inputClass}
-              />
-            </Field>
-            <p className="text-xs text-navy/55">
-              We use your details only to respond to your message. See our{' '}
-              <a href="/privacy" className="text-brand hover:underline">
-                Privacy Policy
-              </a>
-              .
-            </p>
-            <button
-              type="submit"
-              disabled={form.status === 'submitting'}
-              className={buttonClasses('blue', 'lg', 'w-full sm:w-auto')}
+          ) : (
+            <form
+              onSubmit={form.handleSubmit}
+              noValidate
+              className="relative h-fit space-y-5 rounded-3xl bg-white p-6 shadow-soft ring-1 ring-line md:p-10"
             >
-              {form.status === 'submitting' && (
-                <LoaderCircleIcon className="h-4 w-4 animate-spin" aria-hidden="true" />
-              )}
-              Send Message
-            </button>
-            <FormStatus status={form.status} onReset={form.resetStatus} />
-          </form>
+              <Honeypot {...form.honeypotProps} />
+              <h2 className="text-2xl font-bold text-navy">Send us a message</h2>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field id="name" label="Full name" error={errors.name} required>
+                  <input
+                    id="name"
+                    autoComplete="name"
+                    value={values.name}
+                    onChange={(e) => setField('name', e.target.value)}
+                    aria-invalid={Boolean(errors.name)}
+                    className={inputClass}
+                  />
+                </Field>
+                <Field id="email" label="Email" error={errors.email} required>
+                  <input
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                    value={values.email}
+                    onChange={(e) => setField('email', e.target.value)}
+                    aria-invalid={Boolean(errors.email)}
+                    className={inputClass}
+                  />
+                </Field>
+                <Field id="phone" label="Phone (optional)" error={errors.phone}>
+                  <input
+                    id="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    value={values.phone}
+                    onChange={(e) => setField('phone', e.target.value)}
+                    aria-invalid={Boolean(errors.phone)}
+                    className={inputClass}
+                  />
+                </Field>
+                <Field id="topic" label="Topic">
+                  <select
+                    id="topic"
+                    value={values.topic}
+                    onChange={(e) => setField('topic', e.target.value)}
+                    className={inputClass}
+                  >
+                    {topics.map((t) => (
+                      <option key={t}>{t}</option>
+                    ))}
+                  </select>
+                </Field>
+              </div>
+              <Field id="message" label="Message" error={errors.message} required>
+                <textarea
+                  id="message"
+                  rows={6}
+                  value={values.message}
+                  onChange={(e) => setField('message', e.target.value)}
+                  aria-invalid={Boolean(errors.message)}
+                  className={inputClass}
+                />
+              </Field>
+              <p className="text-xs text-navy/55">
+                We use your details only to respond to your message. See our{' '}
+                <a href="/privacy" className="text-brand hover:underline">
+                  Privacy Policy
+                </a>
+                .
+              </p>
+              <button
+                type="submit"
+                disabled={form.status === 'submitting'}
+                className={buttonClasses('blue', 'lg', 'w-full sm:w-auto')}
+              >
+                {form.status === 'submitting' ? (
+                  <>
+                    <LoaderCircleIcon className="h-4 w-4 animate-spin" aria-hidden="true" />
+                    Sending Message...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
+              </button>
+              <FormStatus status={form.status} onReset={form.resetStatus} />
+            </form>
+          )}
         </div>
       </section>
     </>

@@ -96,7 +96,7 @@ export default function VolunteerPage() {
       <PageHero
         crumb="Volunteer"
         title="Give your time. Change a life."
-        intro="Offer your time and skills to support vulnerable communities in Kiambu County. Online sign-up is not connected yet; please contact us directly to discuss volunteering."
+        intro="Offer your time and skills to support vulnerable communities in Kiambu County. Fill out the application form below or contact us directly to discuss volunteering."
         photo={images.volunteersOffice}
       />
 
