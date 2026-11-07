@@ -10,8 +10,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen w-full flex-col bg-white">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-white">
-        
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
+      >
         Skip to content
       </a>
       <TopBar />
@@ -23,6 +23,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </Suspense>
       <Footer />
       <BackToTop />
-    </div>);
-
+    </div>
+  );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightIcon, CalendarDaysIcon, MapPinIcon } from 'lucide-react';
 import type { Project, ProjectStatus } from '@/types/content';
@@ -16,12 +17,14 @@ type ProjectCardProps = {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-line transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-1 hover:shadow-lift">
-      <div className="relative aspect-[16/11] overflow-hidden">
-        <img
+      <div className="relative aspect-[16/11] overflow-hidden bg-neutral-100">
+        <Image
           src={project.photo.src}
-          alt={project.photo.alt}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
+          alt={project.photo.alt || project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+        />
         
         <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[project.status]}`}>
           {project.status}

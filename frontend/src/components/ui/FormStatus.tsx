@@ -10,63 +10,99 @@ type FormStatusProps = {
   status: FormStatusValue;
   onReset: () => void;
   notConnectedMessage?: string;
+  successMessage?: string;
 };
 
-export function FormStatus({ status, onReset, notConnectedMessage }: FormStatusProps) {
+export function FormStatus({
+  status,
+  onReset,
+  notConnectedMessage,
+}: FormStatusProps) {
   return (
     <div aria-live="polite">
       <AnimatePresence mode="wait">
-        {status === 'invalid' &&
-        <motion.div
-          key="invalid"
-          initial={{ opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
-          className="flex items-start gap-3 rounded-xl bg-charity-light p-4 text-sm text-charity-dark">
-          
+        {status === 'invalid' && (
+          <motion.div
+            key="invalid"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="flex items-start gap-3 rounded-xl bg-charity-light p-4 text-sm text-charity-dark"
+          >
             <CircleAlertIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
             <p>Please review the highlighted fields and try again.</p>
           </motion.div>
-        }
-        {status === 'not-connected' &&
-        <motion.div
-          key="nc"
-          initial={{ opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
-          className="rounded-xl border border-brand/20 bg-brand-light p-4 text-sm text-navy">
-          
+        )}
+
+        {status === 'error' && (
+          <motion.div
+            key="error"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="flex items-start gap-3 rounded-xl bg-charity-light p-4 text-sm text-charity-dark"
+          >
+            <CircleAlertIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <div>
+              <p className="font-semibold">Unable to send your message at this time.</p>
+              <p className="mt-1">
+                Please try again, or reach us directly at{' '}
+                <a href={`mailto:${site.email}`} className="font-bold underline">
+                  {site.email}
+                </a>{' '}
+                or call{' '}
+                <a href={`tel:${site.phone}`} className="font-bold underline">
+                  {site.phone}
+                </a>
+                .
+              </p>
+            </div>
+          </motion.div>
+        )}
+
+        {status === 'not-connected' && (
+          <motion.div
+            key="nc"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="rounded-xl border border-brand/20 bg-brand-light p-4 text-sm text-navy"
+          >
             <div className="flex items-start gap-3">
               <InfoIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
               <div>
-                <p className="font-semibold">Your details look good — but nothing has been sent yet.</p>
+                <p className="font-semibold">Your details look good — but online email sending is being configured.</p>
                 <p className="mt-1 text-navy/75">
                   {notConnectedMessage ??
-                'Online submissions will be switched on once our secure form service is connected.'}{' '}
-                  In the meantime, please call us on{' '}
+                    'Our email delivery service is being connected. In the meantime, please call or WhatsApp us directly at'}{' '}
                   {site.phones.map((phone, index) => (
                     <React.Fragment key={phone}>
                       {index > 0 && ' or '}
-                      <a href={`tel:${phone}`} className="font-semibold text-brand underline-offset-2 hover:underline">
+                      <a
+                        href={`tel:${phone}`}
+                        className="font-semibold text-brand underline-offset-2 hover:underline"
+                      >
                         {phone}
                       </a>
                     </React.Fragment>
-                  ))}.
+                  ))}
+                  .
                 </p>
                 <button
-                type="button"
-                onClick={onReset}
-                className="mt-3 text-sm font-semibold text-brand underline-offset-2 hover:underline">
-                
+                  type="button"
+                  onClick={onReset}
+                  className="mt-3 text-sm font-semibold text-brand underline-offset-2 hover:underline"
+                >
                   Edit my details
                 </button>
               </div>
             </div>
           </motion.div>
-        }
+        )}
       </AnimatePresence>
-    </div>);
-
+    </div>
+  );
 }

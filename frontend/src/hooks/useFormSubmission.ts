@@ -1,19 +1,32 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 
-export type FormStatusValue = 'idle' | 'submitting' | 'invalid' | 'not-connected';
+export type FormStatusValue =
+  | 'idle'
+  | 'submitting'
+  | 'invalid'
+  | 'not-connected'
+  | 'error'
+  | 'success';
+
 export type FormErrors<T> = Partial<Record<keyof T, string>>;
 
-/**
- * Validates a form and reports honestly that no submission service is connected yet.
- * Replace the timeout with a real API call once a backend / email service is available.
- */
-export function useFormSubmission<T extends object>(initial: T, validate: (values: T) => FormErrors<T>) {
+export interface FormSubmissionOptions {
+  formType?: 'contact' | 'volunteer' | 'partnership' | 'newsletter';
+  endpoint?: string;
+  onSuccess?: () => void;
+}
+
+export function useFormSubmission<T extends object>(
+  initial: T,
+  validate: (values: T) => FormErrors<T>,
+  options?: FormSubmissionOptions
+) {
   const [values, setValues] = useState<T>(initial);
   const [errors, setErrors] = useState<FormErrors<T>>({});
   const [status, setStatus] = useState<FormStatusValue>('idle');
   const [honeypot, setHoneypot] = useState('');
 
-  const setField = <K extends keyof T,>(key: K, value: T[K]) => {
+  const setField = <K extends keyof T>(key: K, value: T[K]) => {
     setValues((prev) => ({ ...prev, [key]: value }));
     setErrors((prev) => {
       if (!prev[key]) return prev;
@@ -21,21 +34,63 @@ export function useFormSubmission<T extends object>(initial: T, validate: (value
       delete next[key];
       return next;
     });
+    if (status !== 'idle' && status !== 'submitting') {
+      setStatus('idle');
+    }
   };
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    if (honeypot) return; // spam bot filled the hidden field
+
+    // Check honeypot against automated spam bots
+    if (honeypot && honeypot.trim().length > 0) {
+      console.warn('[useFormSubmission] Honeypot trap triggered, aborting submission.');
+      return;
+    }
+
     const nextErrors = validate(values);
     setErrors(nextErrors);
     const keys = Object.keys(nextErrors);
     if (keys.length > 0) {
       setStatus('invalid');
-      document.getElementById(keys[0])?.focus();
+      const firstField = document.getElementById(keys[0]);
+      if (firstField) {
+        firstField.focus();
+        firstField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
       return;
     }
+
     setStatus('submitting');
-    window.setTimeout(() => setStatus('not-connected'), 700);
+
+    try {
+      const response = await fetch(options?.endpoint || '/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: options?.formType || 'contact',
+          ...values,
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success) {
+        setStatus('success');
+        setValues(initial);
+        setErrors({});
+        options?.onSuccess?.();
+      } else if (response.status === 503 || result?.unconfigured) {
+        setStatus('not-connected');
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      console.error('[useFormSubmission] Network error sending form:', err);
+      setStatus('error');
+    }
   };
 
   return {
@@ -45,9 +100,14 @@ export function useFormSubmission<T extends object>(initial: T, validate: (value
     setField,
     handleSubmit,
     resetStatus: () => setStatus('idle'),
+    resetForm: () => {
+      setValues(initial);
+      setErrors({});
+      setStatus('idle');
+    },
     honeypotProps: {
       value: honeypot,
-      onChange: (e: ChangeEvent<HTMLInputElement>) => setHoneypot(e.target.value)
-    }
+      onChange: (e: ChangeEvent<HTMLInputElement>) => setHoneypot(e.target.value),
+    },
   };
 }

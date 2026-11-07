@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Cause } from '@/types/content';
@@ -11,12 +12,14 @@ export function CauseCard({ cause }: CauseCardProps) {
   const Icon = cause.icon;
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-line transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-1 hover:shadow-lift">
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img
+      <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+        <Image
           src={cause.photo.src}
-          alt={cause.photo.alt}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
+          alt={cause.photo.alt || cause.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+        />
         
         <span className="absolute -bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-brand text-white ring-4 ring-white">
           <Icon className="h-5 w-5" aria-hidden="true" />

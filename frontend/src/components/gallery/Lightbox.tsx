@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon, XIcon } from 'lucide-react';
 import type { GalleryItem } from '@/types/content';
@@ -77,7 +78,14 @@ export function Lightbox({ items, index, onClose, onChange }: LightboxProps) {
           className="relative max-h-full w-full max-w-5xl"
           onClick={(e) => e.stopPropagation()}>
           
-            <img src={item.photo.src} alt={item.photo.alt} className="mx-auto max-h-[72svh] max-w-full rounded-2xl object-contain sm:max-h-[80vh]" />
+            <Image
+              src={item.photo.src}
+              alt={item.photo.alt || item.caption}
+              width={1200}
+              height={900}
+              sizes="(max-width: 1024px) 100vw, 1000px"
+              className="mx-auto max-h-[72svh] w-auto max-w-full rounded-2xl object-contain sm:max-h-[80vh]"
+            />
             <figcaption className="mt-4 flex flex-col items-start justify-between gap-3 text-sm text-white/80 sm:flex-row sm:items-center">
               <span>{item.caption}</span>
               <span className="self-end sm:self-auto">

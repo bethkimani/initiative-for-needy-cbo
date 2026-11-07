@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import type { Photo } from '@/types/content';
 
 type TeamPhotoProps = {
@@ -24,10 +25,11 @@ export function TeamPhoto({ photo, initials, className = '', imageClassName = ''
   }
 
   return (
-    <img
+    <Image
       src={photo.src}
-      alt={photo.alt}
-      loading="lazy"
+      alt={photo.alt || 'Initiative for the Needy Team Member'}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
       onError={() => setImageFailed(true)}
       className={imageClassName}
     />
