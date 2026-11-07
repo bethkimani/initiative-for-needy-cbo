@@ -195,8 +195,10 @@ const components: PortableTextComponents = {
         </h3>
       );
     },
-    normal: ({ value, children }: any) => {
-      const rawText = (value?.children || []).map((c: any) => c.text || '').join('');
+    normal: ({ value, children }) => {
+      const rawText = (value?.children || [])
+        .map((c) => ('text' in c && typeof c.text === 'string' ? c.text : ''))
+        .join('');
       return renderMarkdownEnhancedBlock(rawText, children);
     },
     blockquote: ({ children }) => (
@@ -271,7 +273,11 @@ const components: PortableTextComponents = {
   },
 };
 
-export function PortableTextRenderer({ value }: { value: any }) {
+export function PortableTextRenderer({
+  value,
+}: {
+  value: React.ComponentProps<typeof PortableText>['value'];
+}) {
   if (!value) return null;
   return (
     <div className="prose prose-lg max-w-none">

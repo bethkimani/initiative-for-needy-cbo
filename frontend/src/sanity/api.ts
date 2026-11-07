@@ -54,12 +54,24 @@ export const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug][0
   canonicalUrl
 }`;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function extractExcerptFromBody(body: any, fallback: string): string {
+interface PortableTextChild {
+  _type?: string;
+  text?: string;
+  [key: string]: unknown;
+}
+
+interface PortableTextBlock {
+  _type?: string;
+  children?: PortableTextChild[];
+  [key: string]: unknown;
+}
+
+function extractExcerptFromBody(body: unknown, fallback: string): string {
   if (!body || !Array.isArray(body)) return fallback;
-  const firstBlock = body.find((b: any) => b._type === 'block' && b.children);
+  const blocks = body as PortableTextBlock[];
+  const firstBlock = blocks.find((b) => b._type === 'block' && b.children);
   if (firstBlock && Array.isArray(firstBlock.children)) {
-    const text = firstBlock.children.map((c: any) => c.text || '').join('').trim();
+    const text = firstBlock.children.map((c) => c.text || '').join('').trim();
     if (text.length > 200) {
       return text.slice(0, 197) + '...';
     }
