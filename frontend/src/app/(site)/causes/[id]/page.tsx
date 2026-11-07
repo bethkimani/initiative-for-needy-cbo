@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { HeartIcon, TargetIcon } from 'lucide-react';
@@ -7,7 +7,12 @@ import { containerClass } from '@/utils/styles';
 import { PageHero } from '@/components/ui/PageHero';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { CauseCard } from '@/components/cards/CauseCard';
+
 type CausePageProps = { params: Promise<{ id: string }> };
+
+export function generateStaticParams() {
+  return causes.map((c) => ({ id: c.slug }));
+}
 
 export async function generateMetadata({ params }: CausePageProps): Promise<Metadata> {
   const { id } = await params;
@@ -18,7 +23,7 @@ export async function generateMetadata({ params }: CausePageProps): Promise<Meta
   };
 }
 
-export default async function CauseDetail({ params }: CausePageProps) {
+async function CauseDetailContent({ params }: CausePageProps) {
   const { id } = await params;
   const cause = causes.find((item) => item.slug === id);
   if (!cause) notFound();
@@ -36,9 +41,9 @@ export default async function CauseDetail({ params }: CausePageProps) {
             </span>
             <h2 className="mt-6 text-2xl font-bold text-navy md:text-3xl">Why this matters</h2>
             <div className="mt-5 space-y-5 text-lg leading-relaxed text-navy/75">
-              {cause.description.map((p) =>
-              <p key={p}>{p}</p>
-              )}
+              {cause.description.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
             </div>
           </div>
           <aside className="h-fit rounded-3xl bg-soft p-8 lg:sticky lg:top-28">
@@ -66,12 +71,26 @@ export default async function CauseDetail({ params }: CausePageProps) {
         <div className={containerClass}>
           <h2 className="mb-10 text-2xl font-bold text-navy md:text-3xl">Other causes</h2>
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {related.map((c) =>
-            <CauseCard key={c.slug} cause={c} />
-            )}
+            {related.map((c) => (
+              <CauseCard key={c.slug} cause={c} />
+            ))}
           </div>
         </div>
       </section>
-    </>);
+    </>
+  );
+}
 
+export default function CauseDetail({ params }: CausePageProps) {
+  return (
+    <Suspense
+      fallback={
+        <div className={`${containerClass} py-24 text-center text-navy/60`}>
+          Loading cause details...
+        </div>
+      }
+    >
+      <CauseDetailContent params={params} />
+    </Suspense>
+  );
 }

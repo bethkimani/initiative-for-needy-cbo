@@ -53,6 +53,13 @@ export type Article = {
   content: string[];
   photo: Photo;
   featured?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  body?: any;
+  readMinutes?: number;
+  seoTitle?: string;
+  metaDescription?: string;
+  focusKeyword?: string;
+  canonicalUrl?: string;
 };
 
 export type EventItem = {

@@ -74,8 +74,8 @@ export function HeroCarousel() {
       <div className="pointer-events-none absolute inset-0 flex items-center">
         <div className={containerClass}>
           <div key={index} className="pointer-events-auto max-w-2xl pb-24" aria-live="polite">
-            <motion.p {...enter(0)} className="mb-4 text-sm font-semibold text-gold">
-              {String(index + 1).padStart(2, '0')} — Initiative for the Needy, Thika
+            <motion.p {...enter(0)} className="mb-4 text-sm font-semibold tracking-wide text-gold">
+              {String(index + 1).padStart(2, '0')} — Registered Charity Organization &amp; CBO · Thika, Kenya
             </motion.p>
             <motion.h1
               {...enter(0.06)}

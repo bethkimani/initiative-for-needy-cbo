@@ -30,13 +30,16 @@ export function AboutIntro() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">
-            Dignity, Equality and Opportunity for All.
+          <span className="text-sm font-bold uppercase tracking-wider text-charity">
+            Community-Based Charity Organization · Kiambu, Kenya
+          </span>
+          <h2 className="mt-2 text-3xl font-bold leading-tight text-navy md:text-4xl">
+            Empowering Vulnerable Lives with Dignity, Equality, and Opportunity.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-navy/70">
-            We empower vulnerable individuals and groups through advocacy, education, health, economic empowerment and
-            social support. Our volunteer-led organization works across Kiambu County, with pilot communities in Thika,
-            Juja and Ruiru.
+            Initiative for the Needy is a registered Community-Based Charity Organization (CBO) delivering life-changing
+            interventions through advocacy, education, healthcare, economic empowerment, and social support. Our dedicated
+            volunteer network works across Kiambu County, with active community hubs in Thika, Juja, and Ruiru.
           </p>
           <div className="mt-8">
             <PurposeTabs />
