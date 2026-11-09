@@ -15,7 +15,7 @@ export function Footer() {
           <div className="max-w-md">
             <h2 className="text-2xl font-bold">Stay close to the work</h2>
             <p className="mt-2 text-sm text-white/70">
-              Read about our programmes, community achievements and ways to get involved. Newsletter sign-up is not connected yet.
+              Read about our programmes, community achievements and ways to get involved.
             </p>
           </div>
           <NewsletterForm />
