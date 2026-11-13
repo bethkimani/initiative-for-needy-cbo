@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { images, site } from '@/data/site';
 
@@ -9,8 +10,15 @@ type LogoProps = {
 export function Logo({ tone = 'dark' }: LogoProps) {
   return (
     <Link href="/" className="flex min-w-0 items-center gap-2 sm:gap-3" aria-label="Initiative for the Needy — home">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-line sm:h-12 sm:w-12">
-        <img src={images.logo.src} alt="" className="h-[118%] w-[118%] max-w-none object-cover" />
+      <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-line sm:h-12 sm:w-12">
+        <Image
+          src={images.logo.src}
+          alt={images.logo.alt || 'Initiative for the Needy Logo'}
+          fill
+          priority
+          sizes="48px"
+          className="object-cover"
+        />
       </span>
       <span className="min-w-0 leading-tight">
         <span className={`block font-display text-[13px] font-extrabold sm:text-[15px] ${tone === 'light' ? 'text-white' : 'text-navy'}`}>
@@ -23,6 +31,6 @@ export function Logo({ tone = 'dark' }: LogoProps) {
           {site.slogan}
         </span>
       </span>
-    </Link>);
-
+    </Link>
+  );
 }

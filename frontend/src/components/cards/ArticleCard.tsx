@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Article } from '@/types/content';
@@ -11,12 +12,14 @@ type ArticleCardProps = {
 export function ArticleCard({ article }: ArticleCardProps) {
   return (
     <article className="group relative flex h-full flex-col">
-      <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
-        <img
+      <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-100">
+        <Image
           src={article.photo.src}
-          alt={article.photo.alt}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
+          alt={article.photo.alt || article.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+        />
         
         <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand">
           {article.category}

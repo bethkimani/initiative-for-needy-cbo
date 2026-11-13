@@ -21,7 +21,7 @@ export function PageHero({ title, intro, photo, crumb, children }: PageHeroProps
     <section className="relative isolate overflow-hidden bg-navy">
       <motion.img
         src={photo.src}
-        alt=""
+        alt={photo.alt || title}
         className="absolute inset-0 -z-10 h-full w-full object-cover object-[center_40%]"
         initial={{ scale: reduce ? 1 : 1.06 }}
         animate={{ scale: 1 }}

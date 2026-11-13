@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
 import { causes } from '@/data/causes';
@@ -17,7 +18,7 @@ export function FeaturedCauses() {
       <div className={containerClass}>
         <SectionHeading
           title="Who We Support"
-          intro="Our work supports orphans and vulnerable children, street-connected children, persons with disabilities, widows, youth, young parents and older people."
+          intro="Our work supports orphans and vulnerable children, street-connected children, widows, youth, young parents and older people."
           action={
           <ButtonLink to="/causes" variant="red" size="lg">
               Support Our Causes
@@ -30,11 +31,12 @@ export function FeaturedCauses() {
               href={`/causes/${featured.slug}`}
               className="group relative flex h-full min-h-[360px] flex-col justify-end overflow-hidden rounded-3xl sm:min-h-[460px]">
               
-              <img
+              <Image
                 src={featured.photo.src}
-                alt={featured.photo.alt}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
+                alt={featured.photo.alt || featured.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover transition-transform duration-300 ease-out group-hover:scale-105" />
               
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent" aria-hidden="true" />
               <div className="relative p-8">
@@ -61,8 +63,14 @@ export function FeaturedCauses() {
                       href={`/causes/${cause.slug}`}
                       className="group flex items-center gap-5 p-5 transition-colors duration-150 hover:bg-soft">
                       
-                      <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-28">
-                        <img src={cause.photo.src} alt="" loading="lazy" className="h-full w-full object-cover" />
+                      <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-neutral-100 sm:h-24 sm:w-28">
+                        <Image
+                          src={cause.photo.src}
+                          alt={cause.photo.alt || cause.title}
+                          fill
+                          sizes="(max-width: 640px) 96px, 112px"
+                          className="object-cover"
+                        />
                       </div>
                       <div className="min-w-0 flex-1 break-words">
                         <h3 className="flex items-center gap-2 font-bold text-navy">

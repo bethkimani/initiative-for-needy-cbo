@@ -76,15 +76,15 @@ export const causes = [
   icon: BriefcaseIcon
 },
 {
-  slug: 'elderly-and-disability-support',
-  title: 'Elderly & Disability Support',
-  summary: 'Providing food, visits and practical social support to older people and persons with disabilities.',
+  slug: 'elderly-support',
+  title: 'Elderly Support',
+  summary: 'Providing food, visits and practical social support to older people.',
   description: [
-  'The organization has visited and supported older people and persons with disabilities in Kiandutu Slums, including food support.',
+  'The organization has visited and supported older people in Kiandutu Slums, including food support.',
   'It also brought together 100 older people from Kiganjo, Athena and Kiang’ombe to mark the International Day of Older Persons on 1 October 2024.'],
 
   photo: images.causeElderly,
-  goal: 'Support for older people and persons with disabilities',
+  goal: 'Support for older people',
   progress: null,
   icon: AccessibilityIcon
 },
