@@ -196,8 +196,8 @@ export default function Home() {
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
-                name: 'Community Healthcare & Disability Advocacy',
-                description: 'Community-based medical outreaches, health monitoring, and disability inclusion initiatives.',
+                name: 'Community Healthcare',
+                description: 'Community-based medical outreaches and health monitoring.',
               },
             },
           ],

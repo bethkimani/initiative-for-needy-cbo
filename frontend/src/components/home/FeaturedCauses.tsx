@@ -18,7 +18,7 @@ export function FeaturedCauses() {
       <div className={containerClass}>
         <SectionHeading
           title="Who We Support"
-          intro="Our work supports orphans and vulnerable children, street-connected children, persons with disabilities, widows, youth, young parents and older people."
+          intro="Our work supports orphans and vulnerable children, street-connected children, widows, youth, young parents and older people."
           action={
           <ButtonLink to="/causes" variant="red" size="lg">
               Support Our Causes

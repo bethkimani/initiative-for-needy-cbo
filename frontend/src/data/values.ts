@@ -49,7 +49,7 @@ export const organizationObjectives = [
 export const impactStats = [
 { value: 77, label: 'Young people trained', detail: 'Completed short vocational courses', icon: UsersIcon },
 { value: 100, label: 'Older people reached', detail: 'Mobilized for the 2024 Older Persons Day', icon: HandHeartIcon },
-{ value: 6, label: 'Priority groups', detail: 'Children, people with disabilities, people living with HIV/AIDS, widows, youth and older people', icon: TargetIcon },
+{ value: 6, label: 'Priority groups', detail: 'Children, people living with HIV/AIDS, widows, youth and older people', icon: TargetIcon },
 { value: 3, label: 'Pilot communities', detail: 'Thika, Juja and Ruiru', icon: MapPinIcon }];
 
 export const approachItems = [

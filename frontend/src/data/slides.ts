@@ -24,7 +24,7 @@ export const slides = [
   },
   {
     headline: 'Community Care: Dignity for Older Persons & Widows',
-    text: 'Restoring dignity across Thika, Juja, and Ruiru through monthly food baskets, healthcare outreaches, and welfare support for older people and persons with disabilities.',
+    text: 'Restoring dignity across Thika, Juja, and Ruiru through monthly food baskets, healthcare outreaches, and welfare support for older people.',
     primary: { label: 'Support Older Persons', to: '/donate' },
     secondary: { label: 'Contact Our Team', to: '/contact' },
     photo: images.teamOffice
