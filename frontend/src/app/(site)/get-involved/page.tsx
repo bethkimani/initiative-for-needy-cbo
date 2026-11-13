@@ -31,10 +31,6 @@ const details = [
 const skills = ['Teaching & tutoring', 'Healthcare', 'Accounting & finance', 'Photography & media', 'Legal advice', 'IT & web', 'Counselling', 'Logistics'];
 
 export const metadata: Metadata = {
-<<<<<<< HEAD:frontend/src/app/get-involved/page.tsx
-  title: 'Get Involved',
-  description: 'Donate, volunteer, partner or fundraise with Initiative for the Needy Community Based Organization (CBO).',
-=======
   title: 'Get Involved | Volunteer, Partner, or Donate | Initiative for the Needy CBO',
   description:
     'Join our mission to transform lives in Thika and Kiambu County. Explore ways to give, volunteer your professional skills, partner with your business, or fundraise with Initiative for the Needy CBO.',
@@ -75,7 +71,6 @@ export const metadata: Metadata = {
       'Give, serve, partner, or rally others. Every kind of support helps us reach more vulnerable people around Thika.',
     images: ['https://www.initiativefortheneedy.com/images/hero-volunteers.jpg'],
   },
->>>>>>> bbb13c8572c539a85722fe058cc3880856f62d92:frontend/src/app/(site)/get-involved/page.tsx
 };
 
 export default function GetInvolved() {
