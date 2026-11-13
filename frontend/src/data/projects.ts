@@ -52,9 +52,9 @@ export const projects: Project[] = [
     title: 'Kiandutu Community Support',
     category: 'Community Support',
     location: 'Kiandutu Slums, Thika',
-    summary: 'Food support for older people and persons with disabilities in the community.',
+    summary: 'Food support for older people in the community.',
     description: [
-      'The organization visited older people and persons with disabilities in Kiandutu Slums in December 2020 and provided food.',
+      'The organization visited older people in Kiandutu Slums in December 2020 and provided food.',
       'In May 2023, food supplies were provided to 100 older people from Kiandutu Slums.'
     ],
     status: 'Completed',

@@ -40,8 +40,8 @@ export const articles: Article[] = [
     excerpt: 'The organization provided food supplies to 100 older people from Kiandutu Slums.',
     content: [
       'In May 2023, Initiative for the Needy provided food supplies to 100 older people from Kiandutu Slums.',
-      'This work builds on an earlier visit to older people and persons with disabilities in Kiandutu in December 2020, when food was also provided.',
-      'Supporting older people and persons with disabilities is part of the organization’s work to promote dignity, equality and access to basic needs.'
+      'This work builds on an earlier visit to older people in Kiandutu in December 2020, when food was also provided.',
+      'Supporting older people is part of the organization’s work to promote dignity, equality and access to basic needs.'
     ],
     photo: images.foodDonation
   },
